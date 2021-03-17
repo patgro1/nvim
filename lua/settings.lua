@@ -21,3 +21,4 @@ _G.toggle_relative_numbers = function()
 end
 
 vim.api.nvim_set_keymap('n', '<Leader>ln', "v:lua.toggle_relative_numbers()", {expr=true})
+
