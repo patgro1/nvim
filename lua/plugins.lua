@@ -12,7 +12,17 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
+
+    -- Treesiter is a incremental parser to improve syntax highlighting and such
+    use "nvim-treesitter/nvim-treesitter"
     -- LSP
     use "neovim/nvim-lspconfig"
     use "kabouzeid/nvim-lspinstall"
+    use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
+
+
+    -- Helper for coding
+    use "p00f/nvim-ts-rainbow"
+
+    vim.cmd [[packadd nvcode-color-schemes.vim]]
 end)

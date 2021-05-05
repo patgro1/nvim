@@ -1,2 +1,5 @@
 require('plugins')
+require('settings')
 require('lsp.lua-ls')
+require('colorscheme')
+require('pg-treesitter')
