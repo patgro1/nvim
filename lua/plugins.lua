@@ -1,48 +1,18 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-local use = require('packer').use
-return require('packer').startup(function()
-  -- Packer can manage itself as an optional plugin
-  use {'wbthomason/packer.nvim'}
+local execute = vim.api.nvim_command
+local fn = vim.fn
 
-  use {'kyazdani42/nvim-tree.lua'}
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 
-  -- Icons
-  use {'kyazdani42/nvim-web-devicons'}
+if fn.empty(fn.glob(install_path)) > 0 then
+  fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
+  execute 'packadd packer.nvim'
+end
 
-  -- Buffer bar and status line
-  use {'romgrk/barbar.nvim'}
-  use {
-      'glepnir/galaxyline.nvim',
-      branch = 'main',
-      -- your statusline
-      config = function() require'my_statusline' end,
-      -- some optional icons
-      requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
+vim.cmd [[packadd packer.nvim]]
 
-  -- Git
-  use {'TimUntersberger/neogit'}
-
-  -- Colorscheme
-  --use {'Th3Whit3Wolf/one-nvim'}
-  use {'ChristianChiarulli/nvcode-color-schemes.vim'}
-
-  -- Fast colorizer to preview hex colors
-  use {'norcalli/nvim-colorizer.lua'}
-
-  -- Treesitter
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}  -- We recommend updating the parsers on update
-  use {'p00f/nvim-ts-rainbow'}
-
-  -- LSP
-  use {'neovim/nvim-lspconfig'}
-
-  -- Telescope
-  use {
-  'nvim-telescope/telescope.nvim',
-  requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-}
-
-  -- Auto completion
-  use {'hrsh7th/nvim-compe'}
+return require('packer').startup(function(use)
+    use 'wbthomason/packer.nvim'
+    -- LSP
+    use "neovim/nvim-lspconfig"
+    use "kabouzeid/nvim-lspinstall"
 end)
