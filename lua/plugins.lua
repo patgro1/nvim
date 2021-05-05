@@ -20,6 +20,9 @@ return require('packer').startup(function(use)
     use "kabouzeid/nvim-lspinstall"
     use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
 
+    -- Lines
+    use "kyazdani42/nvim-web-devicons" -- This is a dependency of barbar
+    use "romgrk/barbar.nvim"
 
     -- Helper for coding
     use "p00f/nvim-ts-rainbow"
