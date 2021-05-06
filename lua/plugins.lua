@@ -33,6 +33,12 @@ return require('packer').startup(function(use)
         requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
     }
 
+    -- Which key port to nvim
+    use {
+	"AckslD/nvim-whichkey-setup.lua",
+	requires={"liuchengxu/vim-which-key"}
+    }
+
     -- Helper for coding
     use "p00f/nvim-ts-rainbow"
 

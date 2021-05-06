@@ -1,3 +1,4 @@
+vim.g.mapleader = ' '
 -- Terminal coloring and custom settings
 vim.o.termguicolors = true
 vim.o.t_Co = "256"
