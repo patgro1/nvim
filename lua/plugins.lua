@@ -15,14 +15,23 @@ return require('packer').startup(function(use)
 
     -- Treesiter is a incremental parser to improve syntax highlighting and such
     use "nvim-treesitter/nvim-treesitter"
+
     -- LSP
     use "neovim/nvim-lspconfig"
     use "kabouzeid/nvim-lspinstall"
     use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
 
     -- Lines
-    use "kyazdani42/nvim-web-devicons" -- This is a dependency of barbar
-    use "romgrk/barbar.nvim"
+    use {
+        "romgrk/barbar.nvim",
+        requires = {"kyazdani42/nvim-web-devicons"}
+    }
+
+    -- Fuzzy finder
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+    }
 
     -- Helper for coding
     use "p00f/nvim-ts-rainbow"
