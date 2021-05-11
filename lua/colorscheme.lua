@@ -1,3 +1,4 @@
 vim.cmd('let g:nvcode_termcolors=256')
 
-vim.cmd('colorscheme nvcode')
+require('material').set()
+vim.g.material_style = "darker"

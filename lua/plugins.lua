@@ -19,12 +19,33 @@ return require('packer').startup(function(use)
     -- LSP
     use "neovim/nvim-lspconfig"
     use "kabouzeid/nvim-lspinstall"
-    use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
+
+    -- Colorizer for hex code and such within the code
+    use 'norcalli/nvim-colorizer.lua'
+    
+    -- Git stuff
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim'
+        },
+        config = function ()
+            require('gitsigns').setup()
+        end
+    }
 
     -- Lines
     use {
         "romgrk/barbar.nvim",
         requires = {"kyazdani42/nvim-web-devicons"}
+    }
+    use {
+      'glepnir/galaxyline.nvim',
+        branch = 'main',
+        -- your statusline
+        config = function() require'my_statusline' end,
+        -- some optional icons
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
 
     -- Fuzzy finder
@@ -42,5 +63,8 @@ return require('packer').startup(function(use)
     -- Helper for coding
     use "p00f/nvim-ts-rainbow"
 
+    -- Colorscheme
+    use 'marko-cerovac/material.nvim'
+    use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
     vim.cmd [[packadd nvcode-color-schemes.vim]]
 end)
