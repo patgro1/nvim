@@ -20,9 +20,12 @@ return require('packer').startup(function(use)
     use "neovim/nvim-lspconfig"
     use "kabouzeid/nvim-lspinstall"
 
+    -- Auto complete
+    use "hrsh7th/nvim-compe"
+
     -- Colorizer for hex code and such within the code
     use 'norcalli/nvim-colorizer.lua'
-    
+
     -- Git stuff
     use {
         'lewis6991/gitsigns.nvim',

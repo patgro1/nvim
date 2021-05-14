@@ -1,6 +1,7 @@
 require('plugins')
 require('settings')
 require('lsp.lua-ls')
+require('pg-compe')
 require('colorscheme')
 require('pg-treesitter')
 require('pg-colorizer')
