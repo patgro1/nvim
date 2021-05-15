@@ -28,6 +28,21 @@ local keymap = {
         p = {'<Cmd>BufferPrevious<CR>', 'next'},
         k = {'<Cmd>BufferDelete<CR>', 'kill'}
     },
+    g = {
+        name = '+git',
+        n = {'<Cmd>lua require"gitsigns".next_hunk()<CR>', 'Next hunk'},
+        p = {'<Cmd>lua require"gitsigns".next_hunk()<CR>', 'Previous hunk'},
+        s = {'<Cmd>lua require"gitsigns".stage_hunk()<CR>', 'Stage hunk'},
+        S = {'<Cmd>lua require"gitsigns".stage_buffer()<CR>', 'Stage buffer'},
+        u = {'<Cmd>lua require"gitsigns".undo_stage_hunk()<CR>', 'Undo stage hunk'},
+        r = {'<Cmd>lua require"gitsigns".reset_hunk()<CR>', 'Reset hunk'},
+        R = {'<Cmd>lua require"gitsigns".reset_buffer()<CR>', 'Reset buffer'},
+        b = {
+            l = {'<Cmd>lua require"gitsigns".blame_line(true)<CR>', 'Line git blame'},
+            -- TODO: this does not work for some reason....
+            t = {'<Cmd>lua require"gitsigns".toggle_current_line_blame()<CR>', 'Toggle line git blame'},
+        }
+    }
 }
 
 wk.register_keymap('leader', keymap)
