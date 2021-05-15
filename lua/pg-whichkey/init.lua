@@ -39,9 +39,13 @@ local keymap = {
         R = {'<Cmd>lua require"gitsigns".reset_buffer()<CR>', 'Reset buffer'},
         b = {
             l = {'<Cmd>lua require"gitsigns".blame_line(true)<CR>', 'Line git blame'},
-            -- TODO: this does not work for some reason....
+            -- FIX: this does not work for some reason....
             t = {'<Cmd>lua require"gitsigns".toggle_current_line_blame()<CR>', 'Toggle line git blame'},
         }
+    },
+    p = {
+        name = '+project',
+        t = {'<Cmd>TodoTelescope<CR>', 'List all project todos'}
     }
 }
 
