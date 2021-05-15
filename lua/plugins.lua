@@ -26,6 +26,9 @@ return require('packer').startup(function(use)
     -- Colorizer for hex code and such within the code
     use 'norcalli/nvim-colorizer.lua'
 
+    -- todo highlighter that is really awesome
+    use "folke/todo-comments.nvim"
+
     -- Git stuff
     use {
         'lewis6991/gitsigns.nvim',
