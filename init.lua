@@ -1,5 +1,6 @@
 require('plugins')
 require('settings')
+require('lsp')
 require('lsp.lua-ls')
 require('lsp.pyright-ls')
 require('pg-compe')
