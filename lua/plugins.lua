@@ -47,6 +47,11 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {
+        'TimUntersberger/neogit',
+        requires = 'nvim-lua/plenary.nvim'
+    }
+
     -- Lines
     use {
         "romgrk/barbar.nvim",

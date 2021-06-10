@@ -41,7 +41,8 @@ local keymap = {
             l = {'<Cmd>lua require"gitsigns".blame_line(true)<CR>', 'Line git blame'},
             -- FIX: this does not work for some reason....
             t = {'<Cmd>lua require"gitsigns".toggle_current_line_blame()<CR>', 'Toggle line git blame'},
-        }
+        },
+        g = {'<Cmd>lua require"neogit".open()<CR>', 'Neogit'}
     },
     p = {
         name = '+project',
