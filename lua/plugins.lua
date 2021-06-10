@@ -82,6 +82,9 @@ return require('packer').startup(function(use)
     -- Helper for coding
     use "p00f/nvim-ts-rainbow"
 
+    -- Dashboard
+    use "glepnir/dashboard-nvim"
+
     -- Colorscheme
     use 'marko-cerovac/material.nvim'
     use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}

@@ -12,8 +12,10 @@ local wk = require('whichkey_setup')
 local keymap = {
     f = {
         name = '+find',
+        b = {'<Cmd>lua require"telescope.builtin".marks()<CR>', "History"},
         f = {'<Cmd>Telescope find_files<CR>', 'Files'},
         g = {'<Cmd>Telescope git_files<CR>', 'Project'},
+        h = {'<Cmd>lua require"telescope.builtin".oldfiles()<CR>', "History"},
         s = {
             name = 'grep',
             s = {'<Cmd>Telescope grep_string<CR>', 'Grep String'},
@@ -47,6 +49,15 @@ local keymap = {
     p = {
         name = '+project',
         t = {'<Cmd>TodoTelescope<CR>', 'List all project todos'}
+    },
+    s = {
+        name = '+session',
+        s = {'<Cmd>SessionSave<CR>', 'Save'},
+        l = {'<Cmd>SessionLoad<CR>', 'Load'}
+    },
+    t = {
+        name = '+theme',
+        c = {'<Cmd>lua require"telescope.builtin".colorscheme()<CR>', "Change Colorscheme"},
     }
 }
 
