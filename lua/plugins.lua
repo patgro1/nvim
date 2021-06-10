@@ -16,6 +16,12 @@ return require('packer').startup(function(use)
     -- Treesiter is a incremental parser to improve syntax highlighting and such
     use "nvim-treesitter/nvim-treesitter"
 
+    -- File Explorer
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {"kyazdani42/nvim-web-devicons"}
+    }
+
     -- LSP
     use "neovim/nvim-lspconfig"
     use "kabouzeid/nvim-lspinstall"
