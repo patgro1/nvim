@@ -6,4 +6,4 @@ vim.g.material_style = "darker"
 -- Tokyonight configuration
 vim.g.tokyonight_style = "night"
 
-
+vim.cmd('colorscheme material')

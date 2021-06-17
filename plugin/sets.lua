@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
--- Terminal coloring and custom settings
 vim.o.termguicolors = true
---vim.o.t_Co = "256"
+vim.o.guicursor=''
+
 
 -- Want to preview effect of command in the window
 vim.o.inccommand = "nosplit"
@@ -29,14 +29,20 @@ vim.wo.relativenumber = true
 -- Show the sign column all the time
 vim.wo.signcolumn = "yes"
 
--- Status line configuration
-vim.o.showmode = false
+-- Show the sign column all the time
+vim.wo.signcolumn = "yes"
 
 -- Clipboard opened to the world
 vim.o.clipboard = "unnamedplus"
 
+-- This prevents the cursor to read completely down when moving the buffer up or down
+vim.wo.scrolloff = 8
+
 -- Misc
 vim.o.hidden = true
+vim.o.swapfile = false
 vim.o.backup = false -- No need for backup files for modern computers
 vim.wo.wrap = false
 vim.o.writebackup = false
+
+vim.wo.colorcolumn = '120'
