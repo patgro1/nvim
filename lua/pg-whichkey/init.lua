@@ -41,10 +41,32 @@ local keymap = {
         R = {'<Cmd>lua require"gitsigns".reset_buffer()<CR>', 'Reset buffer'},
         b = {
             l = {'<Cmd>lua require"gitsigns".blame_line(true)<CR>', 'Line git blame'},
-            -- FIX: this does not work for some reason....
+            -- FIX: this does not work for some reason.... It turns it off but not back on again
             t = {'<Cmd>lua require"gitsigns".toggle_current_line_blame()<CR>', 'Toggle line git blame'},
         },
         g = {'<Cmd>lua require"neogit".open()<CR>', 'Neogit'}
+    },
+    l = {
+        name = '+lsp',
+        g = {
+            name = '+goto',
+            d = {'<Cmd>lua vim.lsp.buf.definition()<CR>', 'Goto definition'},
+            D = {'<Cmd>lua vim.lsp.buf.declaration()<CR>', 'Goto declaration'},
+            r = {'<Cmd>lua vim.lsp.buf.references()<CR>', 'Find references'},
+            i = {'<Cmd>lua vim.lsp.buf.implementation()<CR>', 'Goto implementation'},
+        },
+        c = {
+            name = '+code',
+            c = {'<Cmd>Lspsaga code_action<CR>', 'Code action'},
+            r = {'<Cmd>Lspsaga rename<CR>', 'Rename'},
+        },
+        h = {'<Cmd>Lspsaga hover_doc<CR>', 'Get hover doc'},
+        f = {'<Cmd>Lspsaga lsp_finder<CR>', 'Find reference and def'},
+        pd = {'<Cmd>Lspsaga preview_definition<CR>', 'Preview definition'},
+        -- d = {
+        -- --    name = '+diagnostics',
+        -- --    c = {'<Cmd>Lspsaga show_line_diagnostic<CR>', 'Show line diagnostic'},
+        -- },
     },
     p = {
         name = '+project',

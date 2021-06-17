@@ -89,4 +89,5 @@ return require('packer').startup(function(use)
     use 'marko-cerovac/material.nvim'
     use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
     vim.cmd [[packadd nvcode-color-schemes.vim]]
+    use 'folke/tokyonight.nvim'
 end)
