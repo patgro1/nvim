@@ -6,6 +6,7 @@ require("whichkey_setup").config{
     },
     default_mode = 'n',
 }
+require('patgro')
 
 local wk = require('whichkey_setup')
 
@@ -16,6 +17,7 @@ local keymap = {
         f = {'<Cmd>Telescope find_files<CR>', 'Files'},
         g = {'<Cmd>Telescope git_files<CR>', 'Project'},
         h = {'<Cmd>lua require"telescope.builtin".oldfiles()<CR>', "History"},
+        c = {'<Cmd>lua require"patgro.telescope".get_vim_config()<CR>', "Vim Config"},
         s = {
             name = 'grep',
             s = {'<Cmd>Telescope grep_string<CR>', 'Grep String'},

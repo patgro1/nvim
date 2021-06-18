@@ -9,7 +9,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 vim.cmd [[packadd packer.nvim]]
-
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
@@ -97,4 +96,8 @@ return require('packer').startup(function(use)
     use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
     vim.cmd [[packadd nvcode-color-schemes.vim]]
     use 'folke/tokyonight.nvim'
+
+    require('patgro')
+
+
 end)
