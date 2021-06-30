@@ -42,6 +42,9 @@ return require('packer').startup(function(use)
     -- Auto complete
     use "hrsh7th/nvim-compe"
 
+    -- Orgmode
+    use "kristijanhusak/orgmode.nvim"
+
     -- Colorizer for hex code and such within the code
     use 'norcalli/nvim-colorizer.lua'
 
