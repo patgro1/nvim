@@ -63,7 +63,7 @@ require'lspconfig'.diagnosticls.setup {
     filetypes = { 'python' },
     init_options = {
         filetypes = {
-            python = { "flake8" },
+            python = { "flake8", "mypy" },
         },
         linters = {
             flake8 = {
