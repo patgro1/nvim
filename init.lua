@@ -91,6 +91,15 @@ return require('packer').startup(function(use)
     -- Helper for coding
     use "p00f/nvim-ts-rainbow"
 
+    -- Faster jump to character navigation
+    use {
+        'ggandor/lightspeed.nvim',
+        config = function ()
+            require('lightspeed').setup()
+        end
+
+    }
+
     -- Dashboard
     use "glepnir/dashboard-nvim"
 
