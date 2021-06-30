@@ -69,6 +69,11 @@ local keymap = {
         -- --    c = {'<Cmd>Lspsaga show_line_diagnostic<CR>', 'Show line diagnostic'},
         -- },
     },
+    o = {
+        name = '+orgmode',
+        a = {'<cmd>lua require("orgmode").action("agenda.prompt")<CR>', 'Agenda'},
+        c = {'<cmd>lua require("orgmode").action("capture.prompt")<CR>', 'Capture'},
+    },
     p = {
         name = '+project',
         t = {'<Cmd>TodoTelescope<CR>', 'List all project todos'}
