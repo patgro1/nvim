@@ -46,3 +46,6 @@ vim.wo.wrap = false
 vim.o.writebackup = false
 
 vim.wo.colorcolumn = '120'
+
+-- Setting python virtualenvironment
+vim.g.python3_host_prog = '~/virtualenvs/nvim/bin/python'

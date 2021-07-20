@@ -58,16 +58,11 @@ local keymap = {
         },
         c = {
             name = '+code',
-            c = {'<Cmd>Lspsaga code_action<CR>', 'Code action'},
-            r = {'<Cmd>Lspsaga rename<CR>', 'Rename'},
+            c = {'<Cmd>lua vim.lsp.buf.code_action()<CR>', 'Code action'},
+            r = {'<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename'},
         },
-        h = {'<Cmd>Lspsaga hover_doc<CR>', 'Get hover doc'},
-        f = {'<Cmd>Lspsaga lsp_finder<CR>', 'Find reference and def'},
-        pd = {'<Cmd>Lspsaga preview_definition<CR>', 'Preview definition'},
-        -- d = {
-        -- --    name = '+diagnostics',
-        -- --    c = {'<Cmd>Lspsaga show_line_diagnostic<CR>', 'Show line diagnostic'},
-        -- },
+        h = {'<Cmd>lua vim.lsp.buf.hover()<CR>', 'Get hover doc'},
+        s = {'<Cmd>lua vim.lsp.buf.signature_help()<CR>', 'Signature Help'},
     },
     o = {
         name = '+orgmode',
