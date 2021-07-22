@@ -82,12 +82,6 @@ return require('packer').startup(function(use)
     }
     use "nvim-telescope/telescope-fzy-native.nvim"
 
-    -- Which key port to nvim
-    use {
-	"AckslD/nvim-whichkey-setup.lua",
-	requires={"liuchengxu/vim-which-key"}
-    }
-
     -- Helper for coding
     use "p00f/nvim-ts-rainbow"
 
@@ -103,7 +97,6 @@ return require('packer').startup(function(use)
     vim.cmd [[packadd nvcode-color-schemes.vim]]
     use 'folke/tokyonight.nvim'
 
-    require('patgro')
-
+    require('core')
 
 end)

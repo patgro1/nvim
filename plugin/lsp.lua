@@ -1,4 +1,16 @@
 -------------------------------------------------------------------------------
+-- Keybinds
+------------------------------------------------------------------------------
+vim.api.nvim_set_keymap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', {noremap=true})
+vim.api.nvim_set_keymap('n', '<leader>gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', {noremap=true})
+vim.api.nvim_set_keymap('n', '<leader>gfr', '<Cmd>lua vim.lsp.buf.references()<CR>', {noremap=true})
+vim.api.nvim_set_keymap('n', '<leader>gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', {noremap=true})
+vim.api.nvim_set_keymap('n', '<leader>cc', '<Cmd>lua vim.lsp.buf.code_action()<CR>', {noremap=true})
+vim.api.nvim_set_keymap('n', '<leader>cr', '<Cmd>lua vim.lsp.buf.rename()<CR>', {noremap=true})
+vim.api.nvim_set_keymap('n', '<leader>hh', '<Cmd>lua vim.lsp.buf.hover()<CR>', {noremap=true})
+vim.api.nvim_set_keymap('n', '<leader>hs', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', {noremap=true})
+
+-------------------------------------------------------------------------------
 -- COMPE
 -------------------------------------------------------------------------------
 require'compe'.setup {

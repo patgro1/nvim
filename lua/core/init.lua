@@ -1,0 +1,5 @@
+require('core.sets')
+require('core.keybinds')
+require('core.lsp')
+require('core.telescope')
+require('core.orgmode')
