@@ -1,0 +1,8 @@
+#+TITLE: Nvim configuration
+#+AUTHOR: Patrick Grogan
+
+* Introduction
+  This is my neovim configuration.
+* Prerequisites
+  - Neovim 0.5
+
