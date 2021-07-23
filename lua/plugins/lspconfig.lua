@@ -1,5 +1,18 @@
-local custom_attach = function(client)
-  print("'" .. client.name .. "' language server started" );
+local on_attach = function(client, bufnr)
+    local function buf_set_keymap(...)
+        vim.api.nvim_buf_set_keymap(bufnr, ...)
+    end
+
+    local opts = {noremap = true, silent = true}
+    -- LSP Mappings
+    buf_set_keymap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', '<leader>gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    buf_set_keymap('n', '<leader>gfr', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', '<leader>gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    buf_set_keymap('n', '<leader>cc', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    buf_set_keymap('n', '<leader>cr', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    buf_set_keymap('n', '<leader>hh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', '<leader>hs', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 end
 
 local data_path = vim.fn.stdpath('data')
@@ -11,7 +24,7 @@ local sumneko_binary = sumneko_root_path .. "/sumneko-lua-language-server"
 
 require'lspconfig'.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-    --on_attach = on_attach
+    on_attach = on_attach,
     settings = {
         Lua = {
             runtime = {
@@ -42,7 +55,9 @@ require'lspconfig'.sumneko_lua.setup {
 -------------------------------------------------------------------------------
 -- python-lsp-server
 -------------------------------------------------------------------------------
-require'lspconfig'.pylsp.setup{}
+require'lspconfig'.pylsp.setup{
+    on_attach = on_attach,
+}
 
 -------------------------------------------------------------------------------
 -- TYPESCRIPT LS
@@ -50,7 +65,8 @@ require'lspconfig'.pylsp.setup{}
 local tsserver_root_path = data_path .. "/lspinstall/typescript/"
 local bin_name = tsserver_root_path .. "node_modules/.bin/typescript-language-server"
 require'lspconfig'.tsserver.setup {
-    cmd = {bin_name, "--stdio"}
+    cmd = {bin_name, "--stdio"},
+    on_attach = on_attach,
 }
 
 -------------------------------------------------------------------------------
@@ -71,6 +87,6 @@ if not lspconfig.sv_lsp then
         };
     }
 end
-lspconfig.sv_lsp.setup{}
-
-
+lspconfig.sv_lsp.setup{
+    on_attach = on_attach,
+}

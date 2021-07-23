@@ -1,3 +1,10 @@
+-- Disable all of that, will be reanbled after loading the theme
+vim.cmd([[
+    syntax off
+    filetype off
+    filetype plugin indent off
+]])
+
 vim.g.mapleader = ' '
 vim.o.termguicolors = true
 vim.o.guicursor=''
@@ -49,3 +56,29 @@ vim.wo.colorcolumn = '120'
 
 -- Setting python virtualenvironment
 vim.g.python3_host_prog = '~/virtualenvs/nvim/bin/python'
+
+-- Do not load these plugins
+local disabled_built_ins = {
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+    "gzip",
+    "zip",
+    "zipPlugin",
+    "tar",
+    "tarPlugin",
+    "getscript",
+    "getscriptPlugin",
+    "vimball",
+    "vimballPlugin",
+    "2html_plugin",
+    "logipat",
+    "rrhelper",
+    "spellfile_plugin",
+    "matchit"
+}
+
+for _, plugin in pairs(disabled_built_ins) do
+    vim.g["loaded_" .. plugin] = 1
+end

@@ -4,6 +4,12 @@ require('material').set()
 vim.g.material_style = "darker"
 
 -- Tokyonight configuration
-vim.g.tokyonight_style = "night"
+-- vim.g.tokyonight_style = "night"
 
 vim.cmd('colorscheme material')
+
+vim.cmd([[
+    syntax on
+    filetype on
+    filetype plugin indent on
+]])
