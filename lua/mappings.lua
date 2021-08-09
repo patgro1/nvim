@@ -17,6 +17,27 @@ map('n', '<leader>,', '<Cmd>nohl<CR>', opts)
 cmd([[autocmd BufWritePre * %s/\s\+$//e]])
 cmd([[autocmd BufWritePre * %s/\n\+\%$//e]])
 
+-- Make Y act like C or D
+map('n', 'Y', 'y$', {noremap = true})
+-- Make sure we recenter the screen when jumping to next/previous find
+map('n', 'n', 'nzzzv', {noremap = true})
+map('n', 'N', 'Nzzzv', {noremap = true})
+-- When joining lines, keep the cursor at the same place
+map('n', 'J', 'mzJ`z', {noremap = true})
+-- Undo breakpoints
+map('i', ',', ',<c-g>u', {noremap = true})
+map('i', '.', '.<c-g>u', {noremap = true})
+map('i', '!', '!<c-g>u', {noremap = true})
+map('i', '?', '?<c-g>u', {noremap = true})
+map('i', '<CR>', '<CR><c-g>u', {noremap = true})
+-- Move text around
+map('v', 'J', ":m '>+1<CR>gv=gv", {noremap = true})
+map('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true})
+map('i', '<C-j>', "<esc>:m .+1<CR>==i", {noremap = true})
+map('i', '<C-k>', "<esc>:m .-2<CR>==i", {noremap = true})
+map('n', '<leader>j', ":m .+1<CR>==", {noremap = true})
+map('n', '<leader>k', ":m .-2<CR>==", {noremap = true})
+
 -- Buffers
 map('n', '<leader>bb', '<Cmd>Telescope buffers<CR>', opts)
 map('n', '<leader>bn', '<Cmd>BufferNext<CR>', opts)
