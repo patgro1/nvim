@@ -112,18 +112,18 @@ return packer.startup({
             "nvim-lua/popup.nvim",
             after = "plenary.nvim"
         }
-
+        use {
+            "nvim-telescope/telescope-fzy-native.nvim",
+            after = "popup.nvim",
+            run = "make",
+            --cmd = "Telescope"
+        }
         use {
             'nvim-telescope/telescope.nvim',
-            cmd = "Telescope",
+            after = "telescope-fzy-native.nvim",
             config = function()
                 require "plugins.telescope"
             end
-        }
-        use {
-            "nvim-telescope/telescope-fzy-native.nvim",
-            run = "make",
-            cmd = "Telescope"
         }
         -- Orgmode
         use {
@@ -134,6 +134,10 @@ return packer.startup({
             end
         }
 
+        use {
+            "b3nj5m1n/kommentary",
+            after = "material.nvim",
+        }
         -- todo highlighter that is really awesome
         use {
             "folke/todo-comments.nvim",

@@ -46,7 +46,6 @@ map('n', '<leader>bo', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
 map('n', '<leader>bk', '<Cmd>BufferDelete<CR>', opts)
 
 -- Telescope
--- FIXME: the custom function wont work since telescope is not loaded at first...
 map('n', '<leader>ff', '<Cmd>lua require"plugins.telescope".find_files()<CR>', opts)
 map('n', '<leader> ', '<Cmd>Telescope git_files<CR>', opts)
 map('n', '<leader>fg', '<Cmd>Telescope git_files<CR>', opts)
@@ -66,8 +65,8 @@ map('n', '<leader>gr', '<Cmd>lua require"gitsigns".reset_hunk()<CR>', opts)
 map('n', '<leader>gR', '<Cmd>lua require"gitsigns".reset_buffer()<CR>', opts)
 map('n', '<leader>gbl', '<Cmd>lua require"gitsigns".blame_line(true)<CR>', opts)
 map('n', '<leader>gbt', '<Cmd>lua require"gitsigns".toggle_current_line_blame()<CR>', opts)
+
 -- Git worktrees
--- FIXME: the custom function wont work since telescope is not loaded at first...
 map('n', '<leader>gww', '<Cmd>lua require("telescope").extensions.git_worktree.git_worktrees()<CR>', opts)
 map('n', '<leader>gcw', '<Cmd>lua require("telescope").extensions.git_worktree.create_git_worktree()<CR>', opts)
 -- Misc
