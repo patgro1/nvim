@@ -163,13 +163,21 @@ return packer.startup({
         }
         use {
             "ThePrimeagen/git-worktree.nvim",
-            after = "plenary.nvim",
+            --after = "plenary.nvim",
             config = function()
             end
         }
         use {
-            "tpope/vim-fugitive",
-            after = "plenary.nvim"
+            "TimUntersberger/neogit",
+            cmd = "Neogit",
+            config = function()
+                require 'plugins.neogit'
+            end
+        }
+
+        use {
+            "sindrets/diffview.nvim",
+            after = "neogit"
         }
     end,
     config = {

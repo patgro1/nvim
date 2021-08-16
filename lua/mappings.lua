@@ -56,7 +56,7 @@ map('n', '<leader>sg', '<Cmd>Telescope live_grep<CR>', opts)
 
 -- Git
 --
-map('n', '<leader>gst', '<Cmd>Gstatus<CR>', opts)
+map('n', '<leader>gg', '<Cmd>Neogit<CR>', opts)
 map('n', '<leader>gn', '<Cmd>lua require"gitsigns".next_hunk()<CR>', opts)
 map('n', '<leader>gp', '<Cmd>lua require"gitsigns".previous_hunk()<CR>', opts)
 map('n', '<leader>gs', '<Cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
