@@ -28,6 +28,13 @@ return packer.startup({
             after = "packer.nvim",
         }
         use {
+            "lukas-reineke/indent-blankline.nvim",
+            event = "BufRead",
+            config = function()
+                require "plugins.indent-blankline"
+            end
+        }
+        use {
             "kyazdani42/nvim-web-devicons",
             after = "material.nvim"
         }
