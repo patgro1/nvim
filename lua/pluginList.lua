@@ -24,6 +24,10 @@ return packer.startup({
             end
         }
         use {
+            "EdenEast/nightfox.nvim",
+            after = "packer.nvim",
+        }
+        use {
             "kyazdani42/nvim-web-devicons",
             after = "material.nvim"
         }
