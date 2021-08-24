@@ -65,6 +65,7 @@ map('n', '<leader>grh', '<Cmd>lua require"gitsigns".reset_hunk()<CR>', opts)
 map('n', '<leader>grf', '<Cmd>lua require"gitsigns".reset_buffer()<CR>', opts)
 map('n', '<leader>gbl', '<Cmd>lua require"gitsigns".blame_line(true)<CR>', opts)
 map('n', '<leader>gbt', '<Cmd>lua require"gitsigns".toggle_current_line_blame()<CR>', opts)
+map('n', '<leader>gpp', '<Cmd>!git push<CR>', opts)
 
 -- Git worktrees
 map('n', '<leader>gww', '<Cmd>lua require("telescope").extensions.git_worktree.git_worktrees()<CR>', opts)
