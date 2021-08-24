@@ -2,7 +2,30 @@ local gl = require('galaxyline')
 local condition = require('galaxyline.condition')
 local gls = gl.section
 
-local colors = require("material.colors")
+--local colors = require("material.colors")
+local nightfox_colors = {
+    black = "#141C26",
+    black_br = "#7f8c98",
+    blue = "#719cd6",
+    blue_br = "#84CEE4",
+    cyan = "#63cdcf",
+    cyan_br = "#59F0FF",
+    green = "#81B29A",
+    green_br = "#58cd8b",
+    magenta = "#9D79D6",
+    magenta_br = "#B8A1E3",
+    orange = "#F4A261",
+    orange_br = "#F6A878",
+    pink = "#D67AD2",
+    pink_br = "#DF97DB",
+    red = "#c94f6d",
+    red_br = "#D6616B",
+    white = "#dfdfe0",
+    white_br = "#F2F2F2",
+    yellow = "#dbc074",
+    yellow_br = "#FFE37E"
+}
+local colors = nightfox_colors
 
 gls.left[1] = {
     FirstElement = {
@@ -159,4 +182,3 @@ gls.right[3] = {
         highlight = {colors.fg,colors.bg},
     }
 }
-

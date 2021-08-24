@@ -19,13 +19,13 @@ return packer.startup({
         use {
             "marko-cerovac/material.nvim",
             after = "packer.nvim",
-            config = function()
-                require("theme")
-            end
         }
         use {
             "EdenEast/nightfox.nvim",
-            after = "packer.nvim",
+            after = "material.nvim",
+            config = function()
+                require("theme")
+            end
         }
         use {
             "lukas-reineke/indent-blankline.nvim",
@@ -36,7 +36,7 @@ return packer.startup({
         }
         use {
             "kyazdani42/nvim-web-devicons",
-            after = "material.nvim"
+            after = "nightfox.nvim"
         }
         -- Status bar and buffer line
         use {
@@ -53,13 +53,13 @@ return packer.startup({
         -- Helper for coding
         use {
             "p00f/nvim-ts-rainbow",
-            after = "material.nvim"
+            after = "nvim-treesitter"
         }
 
         -- File Explorer
         use {
             "kyazdani42/nvim-tree.lua",
-            cmd = "NvimTreeToggle",
+            cmd = {"NvimTreeToggle", "NvimTreeOpen"},
             config = function()
                 require "plugins.nvimtree"
             end
@@ -108,6 +108,10 @@ return packer.startup({
             end
         }
         use {
+            'nvim-lua/lsp-status.nvim',
+            after = 'nvim-lspconfig'
+        }
+        use {
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function()
@@ -147,12 +151,12 @@ return packer.startup({
 
         use {
             "b3nj5m1n/kommentary",
-            after = "material.nvim",
+            after = "nightfox.nvim",
         }
         -- todo highlighter that is really awesome
         use {
             "folke/todo-comments.nvim",
-            after = "material.nvim",
+            after = "nightfox.nvim",
             config = function()
                 require 'plugins.todo-highlighter'
             end
@@ -174,8 +178,9 @@ return packer.startup({
         }
         use {
             "ThePrimeagen/git-worktree.nvim",
-            --after = "plenary.nvim",
+            after = "plenary.nvim",
             config = function()
+                require 'plugins.git-worktree'
             end
         }
         use {

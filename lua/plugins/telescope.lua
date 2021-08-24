@@ -2,7 +2,6 @@ M = {}
 
 require('telescope').setup()
 require('telescope').load_extension('fzy_native')
-require('telescope').load_extension('git_worktree')
 local telescope_builtin = require 'telescope.builtin'
 
 M.find_files = function()

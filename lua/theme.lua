@@ -4,9 +4,9 @@ require('material').set()
 vim.g.material_style = "darker"
 
 -- Tokyonight configuration
--- vim.g.tokyonight_style = "night"
+vim.g.tokyonight_style = "night"
 
-vim.cmd('colorscheme material')
+vim.cmd('colorscheme nightfox')
 
 vim.cmd([[
     syntax on
