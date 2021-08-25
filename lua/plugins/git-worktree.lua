@@ -5,4 +5,3 @@ require("git-worktree").setup({
     clearjumps_on_change = true, -- default: true,
     autopush = false -- default: false,
 })
-require("telescope").load_extension("git_worktree")

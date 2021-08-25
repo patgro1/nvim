@@ -162,6 +162,14 @@ return packer.startup({
                 require 'plugins.orgmode'
             end
         }
+        -- Neorg... ORG mode on steroid
+        use {
+            "vhyrro/neorg",
+            after = "plenary.nvim",
+            config = function()
+                require 'plugins.neorg'
+            end
+        }
 
         use {
             "b3nj5m1n/kommentary",
