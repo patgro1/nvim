@@ -112,6 +112,9 @@ return packer.startup({
             after = 'nvim-lspconfig'
         }
         use {
+            "onsails/lspkind-nvim",
+        }
+        use {
             'hrsh7th/cmp-buffer',
             after = 'nvim-cmp'
         }
@@ -189,7 +192,7 @@ return packer.startup({
         }
         use {
             "ThePrimeagen/git-worktree.nvim",
-            after = "plenary.nvim",
+            after = "telescope.nvim",
             config = function()
                 require 'plugins.git-worktree'
             end
