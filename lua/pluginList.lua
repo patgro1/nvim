@@ -112,10 +112,21 @@ return packer.startup({
             after = 'nvim-lspconfig'
         }
         use {
-            "hrsh7th/nvim-compe",
-            event = "InsertEnter",
+            'hrsh7th/cmp-buffer',
+            after = 'nvim-cmp'
+        }
+        use {
+            'hrsh7th/cmp-nvim-lua',
+            after = 'nvim-cmp'
+        }
+        use {
+            'hrsh7th/cmp-nvim-lsp',
+            after = 'nvim-cmp'
+        }
+        use {
+            "hrsh7th/nvim-cmp",
             config = function()
-                require "plugins.compe"
+                require "plugins.cmp"
             end
         }
 
