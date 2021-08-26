@@ -40,6 +40,8 @@ map('n', '<leader>k', ":m .-2<CR>==", {noremap = true})
 
 -- Buffers
 map('n', '<leader>bb', '<Cmd>Telescope buffers<CR>', opts)
+map('n', '<tab>', '<Cmd>BufferNext<CR>', opts)
+map('n', '<s-tab>', '<Cmd>BufferPrevious<CR>', opts)
 map('n', '<leader>bn', '<Cmd>BufferNext<CR>', opts)
 map('n', '<leader>bp', '<Cmd>BufferPrevious<CR>', opts)
 map('n', '<leader>bo', '<Cmd>BufferCloseAllButCurrent<CR>', opts)
