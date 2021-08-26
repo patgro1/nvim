@@ -12,7 +12,7 @@ cmp.setup{
     },
     sources = {
         { name = 'buffer' },
-        { name = 'lsp' },
+        { name = 'nvim_lsp' },
     },
 }
 vim.cmd [[ autocmd FileType lua lua require'cmp'.setup.buffer { sources = { { name = 'nvim_lua' }, { name = 'buffer' } }, } ]]
