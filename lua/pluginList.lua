@@ -166,6 +166,7 @@ return packer.startup({
         use {
             "vhyrro/neorg",
             after = "plenary.nvim",
+            branch = "unstable",
             config = function()
                 require 'plugins.neorg'
             end
