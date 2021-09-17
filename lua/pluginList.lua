@@ -44,7 +44,7 @@ return packer.startup({
             after = "nvim-web-devicons"
         }
         use {
-            "glepnir/galaxyline.nvim",
+            "NTBBloodbath/galaxyline.nvim",
             after = "nvim-web-devicons",
             config = function()
                 require "plugins.galaxyline"
