@@ -86,3 +86,12 @@ map('n', '<C-l>', '<Cmd>wincmd l<CR>', opts)
 -- Hop
 map('n', '<Leader>ww', '<Cmd>HopWord<CR>', opts)
 map('n', '<Leader>ll', '<Cmd>HopLine<CR>', opts)
+
+-- Harpoon
+map('n', '<C-e>', '<Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
+map('n', '<leader>hc', '<Cmd>lua require("harpoon.cmd-ui").toggle_quick_menu()<CR>', opts)
+map('n', '<leader>a', '<Cmd>lua require("harpoon.mark").add_file()<CR>', opts)
+map('n', '<C-s>', '<Cmd>lua require("harpoon.ui").nav_file(1)<CR>', opts)
+map('n', '<C-d>', '<Cmd>lua require("harpoon.ui").nav_file(2)<CR>', opts)
+map('n', '<C-f>', '<Cmd>lua require("harpoon.ui").nav_file(3)<CR>', opts)
+map('n', '<C-g>', '<Cmd>lua require("harpoon.ui").nav_file(4)<CR>', opts)

@@ -154,6 +154,13 @@ return packer.startup({
                 require "plugins.telescope"
             end
         }
+        use {
+            'ThePrimeagen/harpoon',
+            after = 'plenary.nvim',
+            config = function()
+                require 'plugins.harpoon'
+            end
+        }
         -- Orgmode
         use {
             "kristijanhusak/orgmode.nvim",
