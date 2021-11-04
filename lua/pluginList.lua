@@ -178,6 +178,9 @@ return packer.startup({
                 require 'plugins.neorg'
             end
         }
+        use {
+            "dhruvasagar/vim-table-mode"
+        }
 
         use {
             "b3nj5m1n/kommentary",

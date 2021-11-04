@@ -74,8 +74,9 @@ map('n', '<leader>gww', '<Cmd>lua require("telescope").extensions.git_worktree.g
 map('n', '<leader>gcw', '<Cmd>lua require("telescope").extensions.git_worktree.create_git_worktree()<CR>', opts)
 -- Misc
 map('n', '<leader>tc', '<Cmd>lua require"telescope.builtin".colorscheme()<CR>', opts)
-map('n', '<leader>tt', '<Cmd>NvimTreeToggle<CR>', opts)
-map('n', '<leader>tr', '<Cmd>NvimTreeRefresh<CR>', opts)
+map('n', '<leader>et', '<Cmd>NvimTreeToggle<CR>', opts)
+map('n', '<leader>er', '<Cmd>NvimTreeRefresh<CR>', opts)
+map('n', '<leader>tm', '<Cmd>TableModeToggle<CR>', opts)
 
 -- Split navigation
 map('n', '<C-h>', '<Cmd>wincmd h<CR>', opts)

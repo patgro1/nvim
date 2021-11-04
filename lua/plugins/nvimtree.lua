@@ -1,3 +1,4 @@
+
 vim.g.nvim_tree_side = 'left'
 vim.g.nvim_tree_width = 40
 vim.g.nvim_tree_ignore = {'.git', '.cache'}
@@ -117,5 +118,6 @@ vim.g.nvim_tree_bindings = {
     { key = "q",                            cb = tree_cb("close") },
     { key = "g?",                           cb = tree_cb("toggle_help") },
 }
-vim.api.nvim_set_keymap('n', '<Leader>tt', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<Leader>tr', ':NvimTreeRefresh<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<Leader>tt', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<Leader>tr', ':NvimTreeRefresh<CR>', { noremap = true, silent = true })
+require'nvim-tree'.setup { }
