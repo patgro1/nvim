@@ -173,7 +173,6 @@ return packer.startup({
         use {
             "vhyrro/neorg",
             after = "plenary.nvim",
-            branch = "unstable",
             config = function()
                 require 'plugins.neorg'
             end
@@ -227,6 +226,18 @@ return packer.startup({
         use {
             "sindrets/diffview.nvim",
             after = "neogit"
+        }
+
+        use {
+            "folke/which-key.nvim",
+            config = function()
+                require("which-key").setup {
+                    -- your configuration comes here
+                    -- or leave it empty to use the default settings
+                    -- refer to the configuration section below
+                }
+            end,
+            --after = "packer.nvim"
         }
     end,
     config = {
