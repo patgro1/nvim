@@ -1,3 +1,9 @@
+local function apply_options(scope, options)
+    for opt, val in pairs(options) do
+        scope[opt] = val
+    end
+end
+
 -- Disable all of that, will be reanbled after loading the theme
 vim.cmd([[
     syntax off
@@ -5,57 +11,38 @@ vim.cmd([[
     filetype plugin indent off
 ]])
 
-vim.g.mapleader = ' '
-vim.o.termguicolors = true
-vim.o.guicursor=''
+vim.g.mapleader = ' ' -- TODO: move this into mappings
+local options = {
+    termguicolors = true,           -- Enable 24 bits color in terminal
+    guicursor = '',                 -- Set the gui cursor to nothing for each mode
+    inccommand = "nosplit",         -- Show effect of command incrementally while writing it (substitution)
+    mouse = "a",                    -- Enable mouse in all mode
+    tabstop = 4,                    -- A tab is 4 spaces (display)
+    shiftwidth = 4,                 -- Indent to 4 spaces
+    softtabstop = 4,                -- A tab is 4 spaces (insert mode)
+    expandtab = true,               -- Use spaces instead of tab character
+    smartindent = true,             -- Smart auto indent on new line
+    clipboard = "unnamedplus",      -- Use + register for yank, delete, change and put operation
+    hidden = true,                  -- Make sure hidden buffer are not unloaded
+    backup = false,                 -- Disable file backups
+    writebackup = false,            -- Disable file backup on save
+    swapfile = false,               -- Disable swap files
+}
 
-
--- Want to preview effect of command in the window
-vim.o.inccommand = "nosplit"
-
--- Mouse interaction.. I prefer always using the keyboard but its a nice to have when
--- not actively typing.
-vim.o.mouse = "a"
-
--- Tab and indentation
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.softtabstop = 4
-vim.o.expandtab = true
-vim.o.smartindent = true
-vim.bo.tabstop = 4
-vim.bo.shiftwidth = 4
-vim.bo.softtabstop = 4
-vim.bo.expandtab = true
-vim.bo.smartindent = true
-
--- Line numbers should be always active
-vim.wo.number = true
-vim.wo.relativenumber = true
-
--- Show the sign column all the time
-vim.wo.signcolumn = "yes"
-
--- Show the sign column all the time
-vim.wo.signcolumn = "yes"
-
--- Clipboard opened to the world
-vim.o.clipboard = "unnamedplus"
-
--- This prevents the cursor to read completely down when moving the buffer up or down
-vim.wo.scrolloff = 8
-
--- Misc
-vim.o.hidden = true
-vim.o.swapfile = false
-vim.o.backup = false -- No need for backup files for modern computers
-vim.wo.wrap = false
-vim.o.writebackup = false
-
-vim.wo.colorcolumn = '120'
+local window_options = {
+    signcolumn = "yes",             -- Show the sign colum (for gitsigns)
+    number = true,                  -- Show line numbers
+    relativenumber = true,          -- Use relative line numbers
+    scrolloff = 8,                  -- Keep at least 8 lines above the cursor.
+    wrap = false,                   -- Disable line wrap
+    colorcolumn = '120'             -- Color the 120 character as a limit for line length
+}
 
 -- Setting python virtualenvironment
 vim.g.python3_host_prog = '~/virtualenvs/nvim/bin/python'
+
+apply_options(vim.o, options)
+apply_options(vim.wo, window_options)
 
 -- Do not load these plugins
 local disabled_built_ins = {
