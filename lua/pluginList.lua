@@ -96,17 +96,17 @@ return packer.startup({
 
         -- LSP
         use {
-            "kabouzeid/nvim-lspinstall",
-            event = "BufRead"
-        }
-
-        use {
             "neovim/nvim-lspconfig",
-            after = "nvim-lspinstall",
+            event = "BufRead",
             config = function()
                 require "plugins.lspconfig"
             end
         }
+        use {
+            'williamboman/nvim-lsp-installer',
+            after = 'nvim-lspconfig'
+        }
+
         use {
             'nvim-lua/lsp-status.nvim',
             after = 'nvim-lspconfig'
