@@ -5,14 +5,19 @@ local lspkind = require'lspkind'
 local cmp = require'cmp'
 cmp.setup{
     formatting = {
-        format = function(entry, vim_item)
-            vim_item.kind = lspkind.presets.default[vim_item.kind]
-            return vim_item
-        end
+        format = lspkind.cmp_format {
+            menu = {
+                buffer = "[buf]",
+                nvim_lsp = "[LSP]",
+                nvim_lua = "[api]",
+                path = "[path]",
+            },
+        },
     },
     sources = {
-        { name = 'buffer' },
+        { name = 'nvim_lua' },
         { name = 'nvim_lsp' },
+        { name = 'buffer' },
+        { name = 'path' },
     },
 }
-vim.cmd [[ autocmd FileType lua lua require'cmp'.setup.buffer { sources = { { name = 'nvim_lua' }, { name = 'buffer' } }, } ]]

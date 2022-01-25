@@ -57,6 +57,10 @@ require'lspconfig'.sumneko_lua.setup {
     }
 }
 
+require'lspconfig'.rust_analyzer.setup{
+    on_attach = on_attach,
+}
+
 
 -------------------------------------------------------------------------------
 -- PYRIGHT LS
@@ -71,6 +75,13 @@ require'lspconfig'.sumneko_lua.setup {
     -- python-lsp-server
     -------------------------------------------------------------------------------
     require'lspconfig'.pylsp.setup{
+        on_attach = on_attach,
+    }
+
+    -------------------------------------------------------------------------------
+    -- C/Cpp
+    -------------------------------------------------------------------------------
+    require'lspconfig'.clangd.setup{
         on_attach = on_attach,
     }
 
