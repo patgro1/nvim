@@ -87,7 +87,6 @@ return packer.startup({
         -- is shown thus there is not syntax highlighting.
         use {
             "nvim-treesitter/nvim-treesitter",
-            event = "BufRead",
             config = function()
                 require "plugins.treesitter"
             end,
