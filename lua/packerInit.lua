@@ -1,5 +1,5 @@
 local fn = vim.fn
-local packer_path = fn.stdpath("data").."/site/pack/packer/opt/packer.nvim"
+local packer_path = fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
 local missing_packer = fn.empty(fn.glob(packer_path))
 
 if missing_packer > 0 then

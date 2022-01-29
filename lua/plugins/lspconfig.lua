@@ -30,89 +30,22 @@ local on_attach = function(client, bufnr)
 -- buf_set_keymap('n', '<leader>hs', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts) ]]
 end
 
-local data_path = vim.fn.stdpath('data')
--------------------------------------------------------------------------------
--- LUA LS
--------------------------------------------------------------------------------
-local sumneko_root_path = data_path .. "/lspinstall/lua"
-local sumneko_binary = sumneko_root_path .. "/sumneko-lua-language-server"
+local lsp_installer = require("nvim-lsp-installer")
 
-require'lspconfig'.sumneko_lua.setup {
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
-    on_attach = on_attach,
-    settings = {
-        Lua = {
-            runtime = {
-                version = 'LuaJIT',
-                path = vim.split(package.path, ';')
-            },
-            diagnostics = {
-                globals = {'vim'}
-            },
-            workspace = {
-                library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] =true},
-                maxPreload = 1000
-            }
-        }
-    }
+-- Include the servers you want to have installed by default below
+local servers = {
+  "lua",
 }
 
-require'lspconfig'.rust_analyzer.setup{
-    on_attach = on_attach,
-}
+for _, name in pairs(servers) do
+  local server_is_found, server = lsp_installer.get_server(name)
+  if server_is_found and not server:is_installed() then
+    print("Installing " .. name)
+    server:install()
+  end
+end
 
-
--------------------------------------------------------------------------------
--- PYRIGHT LS
--------------------------------------------------------------------------------
--- local pyright_root_path = data_path .. "/lspinstall/python/"
--- local pyright_binary = pyright_root_path .. "node_modules/.bin/pyright-langserver"
--- require'lspconfig'.pyright.setup {
-    --     cmd = { pyright_binary, "--stdio" }
-    -- }
-
-    -------------------------------------------------------------------------------
-    -- python-lsp-server
-    -------------------------------------------------------------------------------
-    require'lspconfig'.pylsp.setup{
-        on_attach = on_attach,
-    }
-
-    -------------------------------------------------------------------------------
-    -- C/Cpp
-    -------------------------------------------------------------------------------
-    require'lspconfig'.clangd.setup{
-        on_attach = on_attach,
-    }
-
-    -------------------------------------------------------------------------------
-    -- TYPESCRIPT LS
-    -------------------------------------------------------------------------------
-    local tsserver_root_path = data_path .. "/lspinstall/typescript/"
-    local bin_name = tsserver_root_path .. "node_modules/.bin/typescript-language-server"
-    require'lspconfig'.tsserver.setup {
-        cmd = {bin_name, "--stdio"},
-        on_attach = on_attach,
-    }
-
-    -------------------------------------------------------------------------------
-    -- SV LS
-    -------------------------------------------------------------------------------
-    local lspconfig =  require'lspconfig'
-    local configs = require'lspconfig/configs'
-
-    if not lspconfig.sv_lsp then
-        configs.sv_lsp = {
-            default_config = {
-                cmd = {"node", "/home/pgrogan/workspace/svlangserver/lib/svlangserver.js", "--stdio"};
-                filetypes = {'systemverilog'};
-                root_dir = function(fname)
-                    return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_home_dir()
-                end;
-                settings = {};
-            };
-        }
-    end
-    lspconfig.sv_lsp.setup{
-        on_attach = on_attach,
-    }
+lsp_installer.on_server_ready(function(server)
+    local opts = {on_attach=on_attach}
+    server:setup(opts)
+end)
