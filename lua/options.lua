@@ -39,7 +39,7 @@ local window_options = {
 }
 
 -- Setting python virtualenvironment
-vim.g.python3_host_prog = '~/virtualenvs/nvim/bin/python'
+vim.g.python3_host_prog = '~/virtualenvs/editor/bin/python'
 
 apply_options(vim.o, options)
 apply_options(vim.wo, window_options)

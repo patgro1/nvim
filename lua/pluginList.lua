@@ -85,7 +85,6 @@ return packer.startup({
                 require "plugins.lspconfig"
             end
         }
-        use 'williamboman/nvim-lsp-installer'
 
         use 'nvim-lua/lsp-status.nvim'
         use "onsails/lspkind-nvim"
@@ -141,7 +140,6 @@ return packer.startup({
                 require 'plugins.todo-highlighter'
             end
         }
-
 
         use 'norcalli/nvim-colorizer.lua'
 

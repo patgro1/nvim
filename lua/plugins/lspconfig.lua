@@ -25,27 +25,54 @@ local on_attach = function(client, bufnr)
                 s = { '<Cmd>lua vim.lsp.buf.signature_help()<CR>', 'Signature help'}
             },
         },
-}, {prefix = '<leader>'})
--- buf_set_keymap('n', '<leader>hh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
--- buf_set_keymap('n', '<leader>hs', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts) ]]
+    }, {prefix = '<leader>'})
+    -- buf_set_keymap('n', '<leader>hh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    -- buf_set_keymap('n', '<leader>hs', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts) ]]
 end
 
-local lsp_installer = require("nvim-lsp-installer")
+local data_path = vim.fn.stdpath('data')
+local lsp_server_internal_path = data_path .. '/lsp_servers'
+local lspconfig = require'lspconfig'
 
--- Include the servers you want to have installed by default below
-local servers = {
-  "lua",
+-- Lua configuration
+local sumneko_root_path = lsp_server_internal_path .. "/lua/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
+lspconfig.sumneko_lua.setup {
+    on_attach = on_attach,
+    cmd = {sumneko_binary, '-E', sumneko_root_path .. "/main.lua"},
+    settings = {
+        Lua = {
+            runtime = {
+                version = 'LuaJIT',
+                path = vim.split(package.path, ';')
+            },
+            diagnostics = {
+                globals = {'vim'}
+            },
+            workspace = {
+                library = {[vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] =true},
+                maxPreload = 1000
+            }
+        }
+    }
+}
+-------------------------------------------------------------------------------
+-- PYRIGHT LS
+-------------------------------------------------------------------------------
+local pyright_root_path = vim.env.HOME .. "/virtualenvs/editor"
+local pyright_binary = pyright_root_path .. "/bin/pyright-langserver"
+require'lspconfig'.pyright.setup {
+    on_attach = on_attach,
+    cmd = { pyright_binary, "--stdio" }
 }
 
-for _, name in pairs(servers) do
-  local server_is_found, server = lsp_installer.get_server(name)
-  if server_is_found and not server:is_installed() then
-    print("Installing " .. name)
-    server:install()
-  end
-end
 
-lsp_installer.on_server_ready(function(server)
-    local opts = {on_attach=on_attach}
-    server:setup(opts)
-end)
+-------------------------------------------------------------------------------
+-- PYLSP
+-------------------------------------------------------------------------------
+-- local pylsp_root_path = vim.env.HOME .. "/virtualenvs/editor"
+-- local pylsp_binary = pylsp_root_path .. "/bin/pylsp"
+-- lspconfig.pylsp.setup {
+--     cmd = {pylsp_binary},
+--     cmd_env = {VIRTUAL_ENV = pylsp_root_path}
+-- }
