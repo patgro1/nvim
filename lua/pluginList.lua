@@ -166,9 +166,6 @@ return packer.startup({
 
         use "sindrets/diffview.nvim"
 
-        use {
-            "folke/which-key.nvim",
-        }
     end,
     config = {
         display = {

@@ -6,6 +6,7 @@ local cmp = require'cmp'
 cmp.setup{
     formatting = {
         format = lspkind.cmp_format {
+            with_text = true,
             menu = {
                 buffer = "[buf]",
                 nvim_lsp = "[LSP]",
@@ -21,3 +22,4 @@ cmp.setup{
         { name = 'path' },
     },
 }
+local Group = require("colorbuddy.group").Group

@@ -1,33 +1,25 @@
-local wk = require("which-key")
 local on_attach = function(client, bufnr)
     -- LSP Mappings
-    wk.register({
-        l = {
-            name = "LSP",
-            g = {
-                name = "Goto",
-                d = { '<Cmd>lua vim.lsp.buf.definition()<CR>', 'Definition'},
-                D = { '<Cmd>lua vim.lsp.buf.declaration()<CR>', 'Declaration'},
-                i = { '<Cmd>lua vim.lsp.buf.implementation()<CR>', 'Implementation'},
-            },
-            f = {
-                name = 'Find',
-                r =  {'<Cmd>lua vim.lsp.buf.references()<CR>', 'References'}
-            },
-            c = {
-                name = "Code action",
-                c = { '<Cmd>lua vim.lsp.buf.code_action()<CR>', 'Menu' },
-                r = { '<Cmd>lua vim.lsp.buf.rename()<CR>', 'Rename'},
-            },
-            h = {
-                name = 'Documentation',
-                h = { '<Cmd>lua vim.lsp.buf.hover()<CR>', 'Hover doc'},
-                s = { '<Cmd>lua vim.lsp.buf.signature_help()<CR>', 'Signature help'}
-            },
-        },
-    }, {prefix = '<leader>'})
-    -- buf_set_keymap('n', '<leader>hh', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-    -- buf_set_keymap('n', '<leader>hs', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts) ]]
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration)
+    vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover)
+    vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename)
+--             f = {
+--                 name = 'Find',
+--                 r =  {'<Cmd>lua vim.lsp.buf.references()<CR>', 'References'}
+--             },
+--             c = {
+--                 name = "Code action",
+--                 c = { '<Cmd>lua vim.lsp.buf.code_action()<CR>', 'Menu' },
+--             },
+--             h = {
+--                 name = 'Documentation',
+--                 s = { '<Cmd>lua vim.lsp.buf.signature_help()<CR>', 'Signature help'}
+--             },
+--         },
+-- }, {prefix = '<leader>'})
 end
 
 local data_path = vim.fn.stdpath('data')

@@ -6,28 +6,21 @@ local function map(mode, lhs, rhs, opts)
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-local wk = require("which-key")
-
 local opts = {}
 local cmd = vim.cmd
 
-
--- Base shortcuts from leader
---[[ map('n', '<leader>j', ":m .+1<CR>==", {noremap = true})
-map('n', '<leader>k', ":m .-2<CR>==", {noremap = true}) ]]
-wk.register({
-   [','] = {'<Cmd>nohl<CR>', 'Clear search highlight'},
-   j = {":m .+1<CR>==", "Swap line with one below"},
-   k = {":m .-2<CR>==", "Swap line with one over"},
-   -- ['<spc>'] = { '<Cmd>Telescope git_files<CR>', "Find file (project)"}
-}, {prefix = '<leader>'})
+vim.keymap.set('n', '<leader>,', '<cmd>nohl')
+vim.keymap.set('n', '<leader>j', '<cmd>m .+1<CR>==')
+vim.keymap.set('n', '<leader>k', '<cmd>m .-2<CR>==')
 
 
 -- Remove trailling whitespace
+-- TODO: maybe this could be per file type though...
 cmd([[autocmd BufWritePre * %s/\s\+$//e]])
 cmd([[autocmd BufWritePre * %s/\n\+\%$//e]])
 
 -- Make Y act like C or D
+-- # TODO: use the new keymap api
 map('n', 'Y', 'y$', {noremap = true})
 -- Make sure we recenter the screen when jumping to next/previous find
 map('n', 'n', 'nzzzv', {noremap = true})
@@ -46,41 +39,31 @@ map('v', 'K', ":m '<-2<CR>gv=gv", {noremap = true})
 map('i', '<C-j>', "<esc>:m .+1<CR>==i", {noremap = true})
 map('i', '<C-k>', "<esc>:m .-2<CR>==i", {noremap = true})
 
--- Buffers
-wk.register({
-    b = {
-        name = "Buffer",
-        b = {'<Cmd>Telescope buffers<CR>', 'Switch buffer'},
-        n = {'<Cmd>BufferNext<CR>', 'Next Buffer'},
-        p = {'<Cmd>BufferPrevious<CR>', 'Previous Buffer'},
-        o = {'<Cmd>BufferCloseAllButCurrent<CR>', 'Kill other buffers'},
-        k = {'<Cmd>BufferDelete<CR>', 'Kill current buffer'}
-    }
-}, {prefix = "<leader>"})
 
+-- Buffers
+vim.keymap.set('n', '<leader>bb', '<cmd>Telescore buffers<CR>')
+vim.keymap.set('n', '<leader>bn', '<cmd>BufferNext<CR>')
+vim.keymap.set('n', '<leader>bp', '<cmd>BufferPrevious<CR>')
+vim.keymap.set('n', '<leader>bo', '<cmd>BufferCloseAllButCurrent<CR>')
+vim.keymap.set('n', '<leader>bk', '<cmd>BufferDelete<CR>')
+
+-- TODO: use new api
 map('n', '<tab>', '<Cmd>BufferNext<CR>', opts)
 map('n', '<s-tab>', '<Cmd>BufferPrevious<CR>', opts)
 
-wk.register({
-    f = {
-        name = "Files",
-        f = { '<Cmd>lua require"plugins.telescope".find_files()<CR>', "Find file"},
-        g = { '<Cmd>Telescope git_files<CR>', "Find file (project)"},
-        ["spc"] = { '<Cmd>Telescope git_files<CR>', "Find file (project)"},
-        h = { '<Cmd>lua require"telescope.builtin".oldfiles()<CR>', "File history"},
-        p = { '<Cmd>lua require"plugins.telescope".get_vim_config()<CR>', "Find file in config"}
-    }
-}, {prefix = "<leader>"})
+vim.keymap.set('n', '<leader>ff', require"plugins.telescope".find_files)
+vim.keymap.set('n', '<leader>fg', '<Cmd>Telescope git_files<cr>')
+vim.keymap.set('n', '<leader> ', '<Cmd>Telescope git_files<cr>')
+vim.keymap.set('n', '<leader>fh', require"telescope.builtin".oldfiles)
+vim.keymap.set('n', '<leader>fp', require"plugins.telescope".get_vim_config)
 
-wk.register({
-    s = {
-        name = "Grep",
-        s = { '<Cmd>Telescope grep_string<CR>', 'String'},
-        g = { '<Cmd>Telescope live_grep<CR>', 'Live Grep'},
-    }
-}, {prefix = "<leader>"})
+vim.keymap.set('n', '<leader>ss', '<cmd>Telescope grep_string<cr>')
+vim.keymap.set('n', '<leader>sg', '<cmd>Telescope live_grep<cr>')
+-- Search keymaps
+vim.keymap.set('n', '<leader>sk', require"telescope.builtin".keymaps)
 
 -- Misc
+-- TODO: use new api
 map('n', '<leader>tc', '<Cmd>lua require"telescope.builtin".colorscheme()<CR>', opts)
 map('n', '<leader>et', '<Cmd>NvimTreeToggle<CR>', opts)
 map('n', '<leader>er', '<Cmd>NvimTreeRefresh<CR>', opts)
