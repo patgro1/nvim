@@ -41,7 +41,7 @@ map('i', '<C-k>', "<esc>:m .-2<CR>==i", {noremap = true})
 
 
 -- Buffers
-vim.keymap.set('n', '<leader>bb', '<cmd>Telescore buffers<CR>')
+vim.keymap.set('n', '<leader>bb', '<cmd>Telescope buffers<CR>')
 vim.keymap.set('n', '<leader>bn', '<cmd>BufferNext<CR>')
 vim.keymap.set('n', '<leader>bp', '<cmd>BufferPrevious<CR>')
 vim.keymap.set('n', '<leader>bo', '<cmd>BufferCloseAllButCurrent<CR>')
