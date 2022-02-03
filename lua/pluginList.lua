@@ -131,7 +131,12 @@ return packer.startup({
         } ]]
         use "dhruvasagar/vim-table-mode"
 
-        use "numToStr/Comment.nvim"
+        use {
+            "numToStr/Comment.nvim",
+            config = function()
+                require 'plugins.comments'
+            end
+        }
 
         -- todo highlighter that is really awesome
         use {
