@@ -9,7 +9,7 @@ end
 local opts = {}
 local cmd = vim.cmd
 
-vim.keymap.set('n', '<leader>,', '<cmd>nohl')
+vim.keymap.set('n', '<leader>,', '<cmd>nohl<CR>')
 vim.keymap.set('n', '<leader>j', '<cmd>m .+1<CR>==')
 vim.keymap.set('n', '<leader>k', '<cmd>m .-2<CR>==')
 
@@ -78,3 +78,6 @@ map('n', '<C-l>', '<Cmd>wincmd l<CR>', opts)
 -- Hop
 map('n', '<Leader>ww', '<Cmd>HopWord<CR>', opts)
 map('n', '<Leader>ll', '<Cmd>HopLine<CR>', opts)
+
+-- Plugin reload
+vim.keymap.set('n', '<leader>pr', require"telescope.builtin".reloader)
