@@ -96,9 +96,15 @@ return packer.startup({
         use "onsails/lspkind-nvim"
 
         -- Autocomplete
-        use "hrsh7th/nvim-cmp"
+        use {
+            "hrsh7th/nvim-cmp",
+            config = function()
+                require "plugins.cmp"
+            end
+        }
         use 'hrsh7th/cmp-buffer'
         use 'hrsh7th/cmp-path'
+        use 'hrsh7th/cmp-omni'
         use 'hrsh7th/cmp-nvim-lua'
         use 'hrsh7th/cmp-nvim-lsp'
 

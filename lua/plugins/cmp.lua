@@ -12,6 +12,7 @@ cmp.setup{
                 nvim_lsp = "[LSP]",
                 nvim_lua = "[api]",
                 path = "[path]",
+                omni = "[omni]",
             },
         },
     },
@@ -20,6 +21,6 @@ cmp.setup{
         { name = 'nvim_lsp' },
         { name = 'buffer' },
         { name = 'path' },
+        { name = 'omni' },
     },
 }
-local Group = require("colorbuddy.group").Group
