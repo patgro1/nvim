@@ -20,6 +20,9 @@ return packer.startup({
                 require("theme")
             end
         }
+        use "https://github.com/shaunsingh/nord.nvim.git"
+        use 'Mofiqul/dracula.nvim'
+        use 'bluz71/vim-nightfly-guicolors'
         use {
             "lukas-reineke/indent-blankline.nvim",
             config = function()
@@ -81,6 +84,9 @@ return packer.startup({
         -- LSP
         use {
             "neovim/nvim-lspconfig",
+        }
+        use {
+            'williamboman/nvim-lsp-installer',
             config = function()
                 require "plugins.lspconfig"
             end
