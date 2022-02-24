@@ -8,8 +8,4 @@ vim.cmd('let g:nvcode_termcolors=256')
 
 vim.cmd('colorscheme nightfox')
 
-vim.cmd([[
-    syntax on
-    filetype on
-    filetype plugin indent on
-]])
+vim.cmd('syntax on')

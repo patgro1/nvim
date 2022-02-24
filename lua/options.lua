@@ -4,13 +4,6 @@ local function apply_options(scope, options)
     end
 end
 
--- Disable all of that, will be reanbled after loading the theme
-vim.cmd([[
-    syntax off
-    filetype off
-    filetype plugin indent off
-]])
-
 vim.g.mapleader = ' ' -- TODO: move this into mappings
 local options = {
     termguicolors = true,           -- Enable 24 bits color in terminal
@@ -38,11 +31,16 @@ local window_options = {
     colorcolumn = '120'             -- Color the 120 character as a limit for line length
 }
 
--- Setting python virtualenvironment
-vim.g.python3_host_prog = '~/virtualenvs/editor/bin/python'
+local global_options = {
+    python3_host_prog = '~/virtualenvs/editor/bin/python',
+    tex_flavor = 'latex',
+    do_filetype_lua = 1,
+    did_load_filetpyes = 0
+}
 
 apply_options(vim.o, options)
 apply_options(vim.wo, window_options)
+apply_options(vim.g, global_options)
 
 -- Do not load these plugins
 local disabled_built_ins = {
@@ -65,6 +63,13 @@ local disabled_built_ins = {
     "spellfile_plugin",
     "matchit"
 }
+
+-- TODO: This might be moved elsewhere
+vim.filetype.add({
+    pattern = {
+        ["Dockerfile_.*.txt"] = "dockerfile"
+    }
+})
 
 for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
