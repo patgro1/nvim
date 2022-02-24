@@ -1,3 +1,4 @@
+require('orgmode').setup_ts_grammar()
 require('orgmode').setup {
     org_agenda_files = '~/org/*',
     org_default_notes_file = '~/org/refile.org',
@@ -10,4 +11,3 @@ require('orgmode').setup {
 }
 vim.api.nvim_set_keymap('n', '<leader>oa', '<Cmd>lua require"orgmode".action("agenda.prompt")<CR>', {noremap=true})
 vim.api.nvim_set_keymap('n', '<leader>oc', '<Cmd>lua require"orgmode".action("capture.prompt")<CR>', {noremap=true})
-
