@@ -13,6 +13,8 @@ local use = packer.use
 return packer.startup({
     function()
         use "wbthomason/packer.nvim"
+        use "dstein64/vim-startuptime"
+        use "lewis6991/impatient.nvim"
         use "marko-cerovac/material.nvim"
         use {
             "EdenEast/nightfox.nvim",
