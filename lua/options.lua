@@ -20,6 +20,7 @@ local options = {
     backup = false,                 -- Disable file backups
     writebackup = false,            -- Disable file backup on save
     swapfile = false,               -- Disable swap files
+    laststatus = 3,                 -- Single status line for the whole frame
 }
 
 local window_options = {
