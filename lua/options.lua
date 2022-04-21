@@ -7,7 +7,7 @@ end
 vim.g.mapleader = ' ' -- TODO: move this into mappings
 local options = {
     termguicolors = true,           -- Enable 24 bits color in terminal
-    guicursor = '',                 -- Set the gui cursor to nothing for each mode
+    guicursor = "a:block,i-ci-ve:ver25",  -- Set the gui cursor to nothing for each mode
     inccommand = "nosplit",         -- Show effect of command incrementally while writing it (substitution)
     mouse = "a",                    -- Enable mouse in all mode
     tabstop = 4,                    -- A tab is 4 spaces (display)
