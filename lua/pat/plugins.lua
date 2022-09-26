@@ -57,6 +57,19 @@ return require('packer').startup(function(use)
     }
     use "p00f/nvim-ts-rainbow"
 
+
+    -- Auto complete
+    use "onsails/lspkind-nvim"
+    use {
+        "hrsh7th/nvim-cmp",
+        config = function()
+            require "pat.cmp"
+        end
+    }
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-nvim-lua'
+
     use "sindrets/diffview.nvim"
     -- Automatically set up configuration after clone packer
     -- Put this at the end of all plugins
