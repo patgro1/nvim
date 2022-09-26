@@ -71,6 +71,9 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-nvim-lua'
 
     use "sindrets/diffview.nvim"
+
+    use "lukas-reineke/indent-blankline.nvim"
+
     -- Automatically set up configuration after clone packer
     -- Put this at the end of all plugins
     if packer_bootstrap then
