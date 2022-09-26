@@ -46,6 +46,7 @@ return require('packer').startup(function(use)
         "nvim-telescope/telescope-fzy-native.nvim",
         run = "make",
     }
+    use "sindrets/diffview.nvim"
     -- Automatically set up configuration after clone packer
     -- Put this at the end of all plugins
     if packer_bootstrap then
