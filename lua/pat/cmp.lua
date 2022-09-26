@@ -8,6 +8,7 @@ cmp.setup {
             mode = 'symbol_text',
             menu = {
                 buffer = "[buf]",
+                lsp = "[LSP]",
                 nvim_lua = "[api]",
                 path = "[path]",
             },
@@ -15,6 +16,7 @@ cmp.setup {
     },
     sources = {
         { name = 'nvim_lua' },
+        { name = 'nvim_lsp' },
         { name = 'buffer' },
         { name = 'path' },
     },
@@ -25,3 +27,4 @@ cmp.setup {
         ["<CR>"] =  cmp.mapping.confirm({ select=true }), -- When nothing is selected, take first item
     }),
 }
+

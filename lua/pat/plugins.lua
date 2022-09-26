@@ -69,6 +69,19 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp'
+
+    -- LSP
+    use 'williamboman/mason.nvim'
+    use {
+        'williamboman/mason-lspconfig.nvim',
+        after = "mason.nvim",
+        config = function()
+            require "pat.mason"
+
+        end
+    }
+    use 'neovim/nvim-lspconfig'
 
     use "sindrets/diffview.nvim"
 
