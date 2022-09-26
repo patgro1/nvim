@@ -46,6 +46,17 @@ return require('packer').startup(function(use)
         "nvim-telescope/telescope-fzy-native.nvim",
         run = "make",
     }
+
+    -- Treesitter and utilities
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require "pat.treesitter"
+        end,
+        run = ":TSUpdate"
+    }
+    use "p00f/nvim-ts-rainbow"
+
     use "sindrets/diffview.nvim"
     -- Automatically set up configuration after clone packer
     -- Put this at the end of all plugins
