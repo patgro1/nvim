@@ -17,6 +17,14 @@ return require('packer').startup(function(use)
     -- Faster vim startup
     use 'lewis6991/impatient.nvim'
 
+    -- Color scheme
+    use {
+            "EdenEast/nightfox.nvim",
+            config = function()
+                require("pat.theme")
+            end
+        }
+
     -- File Explorer
     use 'kyazdani42/nvim-web-devicons'
     use {
