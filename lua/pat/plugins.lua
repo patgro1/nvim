@@ -17,6 +17,15 @@ return require('packer').startup(function(use)
     -- Faster vim startup
     use 'lewis6991/impatient.nvim'
 
+    -- File Explorer
+    use 'kyazdani42/nvim-web-devicons'
+    use {
+        "kyazdani42/nvim-tree.lua",
+        cmd = {"NvimTreeToggle", "NvimTreeOpen"},
+        config = function()
+            require "pat.nvimtree"
+        end
+    }
     -- Automatically set up configuration after clone packer
     -- Put this at the end of all plugins
     if packer_bootstrap then
