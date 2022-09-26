@@ -40,3 +40,13 @@ vim.keymap.set('n', '<C-l>', '<Cmd>wincmd l<CR>')
 -- Nvimtree
 vim.keymap.set('n', '<leader>et', '<Cmd>NvimTreeToggle<CR>')
 vim.keymap.set('n', '<leader>er', '<Cmd>NvimTreeRefresh<CR>')
+
+-- Telescope accessors
+vim.keymap.set('n', '<leader>bb', '<cmd>Telescope buffers<CR>')
+vim.keymap.set('n', '<leader>ff', require"pat.telescope".find_files)
+vim.keymap.set('n', '<leader>fg', '<Cmd>Telescope git_files<cr>')
+vim.keymap.set('n', '<leader> ', '<Cmd>Telescope git_files<cr>')
+vim.keymap.set('n', '<leader>fh', require"telescope.builtin".oldfiles)
+vim.keymap.set('n', '<leader>fp', require"pat.telescope".get_vim_config)
+vim.keymap.set('n', '<leader>fd', require"pat.telescope".get_dot_files)
+vim.keymap.set('n', '<leader>hh', '<Cmd>Telescope help_tags<cr>')

@@ -26,6 +26,18 @@ return require('packer').startup(function(use)
             require "pat.nvimtree"
         end
     }
+
+    use 'nvim-lua/plenary.nvim'
+    use {
+        'nvim-telescope/telescope.nvim',
+        config = function()
+            require "pat.telescope"
+        end
+    }
+    use {
+        "nvim-telescope/telescope-fzy-native.nvim",
+        run = "make",
+    }
     -- Automatically set up configuration after clone packer
     -- Put this at the end of all plugins
     if packer_bootstrap then
