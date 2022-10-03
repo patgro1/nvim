@@ -82,6 +82,13 @@ return require('packer').startup(function(use)
 
     use "lukas-reineke/indent-blankline.nvim"
 
+    use {
+        "akinsho/toggleterm.nvim",
+        config = function()
+            require "pat/toggleterm"
+        end
+    }
+
     -- Automatically set up configuration after clone packer
     -- Put this at the end of all plugins
     if packer_bootstrap then
