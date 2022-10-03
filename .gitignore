@@ -1,2 +1,4 @@
 lua/ls/lua-language-server
 plugin/packer_compiled.vim
+
+plugin/packer_compiled.lua
