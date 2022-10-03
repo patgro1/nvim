@@ -36,10 +36,6 @@ for opt, val in pairs(options) do
     vim.opt[opt] = val
 end
 
--- Using the lua filetype detection. This can be removed in 0.8
-vim.g.do_filetype_lua=1
-vim.g.did_load_filetypes = 0
-
 -- Do not load these plugins
 local disabled_built_ins = {
     "netrw",
