@@ -17,4 +17,12 @@ M.get_vim_config = function ()
         })
 end
 
+M.get_dot_files = function ()
+    telescope_builtin.find_files({
+            find_command = {'rg', '--files', '--hidden', '-g', '!.git' },
+            prompt_title = "< Dotfiles >",
+            cwd = "$HOME/dotfiles"
+        })
+end
+
 return M
