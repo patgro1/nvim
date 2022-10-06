@@ -7,6 +7,7 @@ require 'nvim-treesitter.configs'.setup {
         "yaml",
         "bash",
         "cmake",
+        "latex"
     },
     highlight = {
         enable = true

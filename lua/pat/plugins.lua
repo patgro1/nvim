@@ -99,6 +99,12 @@ return require('packer').startup(function(use)
         end
     }
 
+    use {
+        'lervag/vimtex'
+    }
+
+
+
     -- Automatically set up configuration after clone packer
     -- Put this at the end of all plugins
     if packer_bootstrap then
