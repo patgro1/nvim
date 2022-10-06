@@ -37,6 +37,9 @@ return require('packer').startup(function(use)
 
     use 'nvim-lua/plenary.nvim'
     use {
+        'nvim-telescope/telescope-symbols.nvim'
+    }
+    use {
         'nvim-telescope/telescope.nvim',
         config = function()
             require "pat.telescope"
@@ -86,6 +89,13 @@ return require('packer').startup(function(use)
         "akinsho/toggleterm.nvim",
         config = function()
             require "pat/toggleterm"
+        end
+    }
+
+    use {
+       'NvChad/nvim-colorizer.lua',
+       config = function()
+            require "colorizer".setup()
         end
     }
 
