@@ -26,3 +26,13 @@ require('lspconfig').pylsp.setup({
 require('lspconfig').rust_analyzer.setup({
     on_attach = on_attach
 })
+
+-- Some autocmd used with LSP
+local rust_grp = vim.api.nvim_create_augroup("RustAuto", {clear=true})
+
+vim.api.nvim_create_autocmd("BufWritePre",{
+    group = rust_grp,
+    pattern = "*.rs",
+    command = "lua vim.lsp.buf.format()"
+    }
+)
