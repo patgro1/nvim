@@ -27,7 +27,7 @@ vim.keymap.set('i', '<CR>', '<CR><c-g>u')
 --vim.keymap.set('n', '<leader>bb', '<cmd>Telescope buffers<CR>')
 vim.keymap.set('n', '<leader>bn', '<cmd>bnext<CR>')
 vim.keymap.set('n', '<leader>bp', '<cmd>bprevious<CR>')
-vim.keymap.set('n', '<leader>bk', '<cmd>bdelete<CR>')
+vim.keymap.set('n', '<leader>bk', '<cmd>bprevious<bar> bd#<CR>')
 vim.keymap.set('n', '<leader>bo', '<cmd>:w <bar> %bd <bar> e# <bar> bd#<CR>')
 
 
