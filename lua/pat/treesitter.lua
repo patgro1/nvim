@@ -11,7 +11,8 @@ require 'nvim-treesitter.configs'.setup {
         "rust"
     },
     highlight = {
-        enable = true
+        enable = true,
+        disable = {"python", }
     },
     rainbow = {enable = true}
 }
