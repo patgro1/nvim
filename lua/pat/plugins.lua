@@ -19,7 +19,8 @@ return require('packer').startup(function(use)
 
     -- Color scheme
     use {
-            "EdenEast/nightfox.nvim",
+            -- "EdenEast/nightfox.nvim",
+            "ellisonleao/gruvbox.nvim",
             config = function()
                 require("pat.theme")
             end
