@@ -101,6 +101,13 @@ return require('packer').startup(function(use)
     }
 
     use {
+        'simrat39/rust-tools.nvim',
+        config = function()
+            require "pat.rust-tools"
+        end
+    }
+
+    use {
         'lervag/vimtex'
     }
 
