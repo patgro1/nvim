@@ -46,11 +46,9 @@ return require('packer').startup(function(use)
             require "pat.telescope"
         end
     }
-    use {
-        "nvim-telescope/telescope-fzy-native.nvim",
-        run = "make",
+    use {'nvim-telescope/telescope-fzf-native.nvim',
+        run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' 
     }
-
     -- Treesitter and utilities
     use {
         "nvim-treesitter/nvim-treesitter",
@@ -81,7 +79,7 @@ return require('packer').startup(function(use)
     use {
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
-        'neovim/nvim-lspconfig'
+        'neovim/nvim-lspconfig',
     }
 
     use "sindrets/diffview.nvim"
