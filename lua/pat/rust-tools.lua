@@ -13,6 +13,7 @@ on_attach = function(client, buffer)
     vim.keymap.set('n', '<leader>n', vim.diagnostic.goto_next)
     vim.keymap.set('n', '<leader>p', vim.diagnostic.goto_prev)
     vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename)
+    vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action)
     vim.keymap.set('n', '<C-space>', require("rust-tools").hover_actions.hover_actions)
 end
 
