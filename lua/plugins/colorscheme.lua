@@ -1,8 +1,15 @@
 return {
     "EdenEast/nightfox.nvim",
     {
-        "ellisonleao/gruvbox.nvim",
+        "folke/tokyonight.nvim",
         lazy = false,
+        config = function()
+            vim.cmd([[colorscheme tokyonight-night]])
+        end
+    },
+    {
+        "ellisonleao/gruvbox.nvim",
+        lazy = true,
         config = function()
             require("gruvbox").setup({
                 undercurl = true,
@@ -21,7 +28,6 @@ return {
                 dim_inactive = false,
                 transparent_mode = false,
             })
-            vim.cmd([[colorscheme gruvbox]])
         end
     }
 }
