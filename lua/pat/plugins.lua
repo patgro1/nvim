@@ -57,6 +57,7 @@ return require('packer').startup(function(use)
         end,
         run = ":TSUpdate"
     }
+    use "nvim-treesitter/playground"
     use "p00f/nvim-ts-rainbow"
 
     use "L3MON4D3/LuaSnip"
