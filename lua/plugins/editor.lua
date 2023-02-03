@@ -35,13 +35,18 @@ return {
                         ["s"] = "split_with_window_picker",
                         ["S"] = "vsplit_with_window_picker"
                     }
+                },
+                filesystem = {
+                    filtered_items = {
+                        hide_dotfiles = false,
+                    }
                 }
             })
         end,
         keys = {
             {
                 "<leader>fe",
-                function() 
+                function()
                     require("neo-tree.command").execute({toggle = true})
                 end,
                 desc = "File explorer"
