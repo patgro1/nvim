@@ -18,5 +18,11 @@ require("config.autocmd")
 require("lazy").setup({
     defaults = { lazy = true },
 	spec = {
-		{ import = "plugins"}}
+		{ import = "plugins" }
+    },
+    checker = {
+        enabled = true,
+        notify = false,
+        frequency = 3600
+    }
 })
