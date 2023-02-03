@@ -151,6 +151,14 @@ ins_left {
   icon = ' LSP:',
   color = { fg = '#ffffff', gui = 'bold' },
 }
+ins_right {
+    function()
+        return require'lazy.status'.updates()
+    end,
+    cond = require'lazy.status'.has_updates,
+    color = { fg = colors.orange },
+    padding = { left = 1 }
+}
 -- Add components to right sections
 ins_right {
   'o:encoding', -- option component same as &encoding in viml
@@ -191,6 +199,10 @@ ins_right {
   color = { fg = colors.blue },
   padding = { left = 1 },
 }
+
+
+
+
 
 M.config_lualine = function ()
     lualine.setup(M.config)
