@@ -4,7 +4,7 @@ local function apply_options(scope, options)
     end
 end
 
-vim.g.mapleader = ' ' -- TODO: move this into mappings
+vim.g.mapleader = ' ' 
 local options = {
     termguicolors = true,           -- Enable 24 bits color in terminal
     guicursor = "a:block,i-ci-ve:ver25",  -- Set the gui cursor to nothing for each mode
@@ -36,27 +36,27 @@ for opt, val in pairs(options) do
     vim.opt[opt] = val
 end
 
--- Do not load these plugins
-local disabled_built_ins = {
-    "netrw",
-    "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin",
-    "getscript",
-    "getscriptPlugin",
-    "vimball",
-    "vimballPlugin",
-    "2html_plugin",
-    "logipat",
-    "rrhelper",
-    "spellfile_plugin",
-    "matchit"
-}
+---- Do not load these plugins
+--local disabled_built_ins = {
+--    "netrw",
+--    "netrwPlugin",
+--    "netrwSettings",
+--    "netrwFileHandlers",
+--    "gzip",
+--    "zip",
+--    "zipPlugin",
+--    "tar",
+--    "tarPlugin",
+--    "getscript",
+--    "getscriptPlugin",
+--    "vimball",
+--    "vimballPlugin",
+--    "2html_plugin",
+--    "logipat",
+--    "rrhelper",
+--    "spellfile_plugin",
+--    "matchit"
+--}
 
 -- TODO: This might be moved elsewhere
 vim.filetype.add({
@@ -65,6 +65,7 @@ vim.filetype.add({
     }
 })
 
-for _, plugin in pairs(disabled_built_ins) do
-    vim.g["loaded_" .. plugin] = 1
-end
+--for _, plugin in pairs(disabled_built_ins) do
+--    vim.g["loaded_" .. plugin] = 1
+--end
+

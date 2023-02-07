@@ -1,14 +1,22 @@
-local fn = vim.fn
-local impatient_install_path = fn.stdpath('data') .. '/site/pack/packer/start/impatient.nvim'
-if fn.empty(fn.glob(impatient_install_path)) > 0 then
-    print "Impatient not present, skipping"
-else
-    require("impatient")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-require("pat.options")
-require("pat.plugins")
-require("pat.keymaps")
--- LSP is completely setup outside of plugins to make sure
--- everything is loaded up BEFORE we want to try anything
-require("pat.lsp")
+require("config.options")
+require("config.keymaps")
+require("config.autocmd")
+
+require("lazy").setup({
+    defaults = { lazy = true },
+	spec = {
+		{ import = "plugins"}}
+})
