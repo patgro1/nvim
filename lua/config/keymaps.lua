@@ -37,19 +37,3 @@ vim.keymap.set('n', '<C-j>', '<Cmd>wincmd j<CR>')
 vim.keymap.set('n', '<C-k>', '<Cmd>wincmd k<CR>')
 vim.keymap.set('n', '<C-l>', '<Cmd>wincmd l<CR>')
 
--- Nvimtree
-vim.keymap.set('n', '<leader>et', '<Cmd>NvimTreeToggle<CR>')
-vim.keymap.set('n', '<leader>er', '<Cmd>NvimTreeRefresh<CR>')
-
--- Telescope accessors
-vim.keymap.set('n', '<leader>bb', '<cmd>Telescope buffers<CR>')
-vim.keymap.set('n', '<leader>ff', require"pat.telescope".find_files)
-vim.keymap.set('n', '<leader>fg', '<Cmd>Telescope git_files<cr>')
-vim.keymap.set('n', '<leader> ', '<Cmd>Telescope git_files<cr>')
-vim.keymap.set('n', '<leader>fh', require"telescope.builtin".oldfiles)
-vim.keymap.set('n', '<leader>fp', require"pat.telescope".get_vim_config)
-vim.keymap.set('n', '<leader>fd', require"pat.telescope".get_dot_files)
-vim.keymap.set('n', '<leader>hh', '<Cmd>Telescope help_tags<cr>')
-vim.keymap.set('n', '<leader>ii', '<Cmd>Telescope symbols<cr>')
-vim.keymap.set('n', '<leader>ss', ':lua require\'telescope.builtin\'.grep_string{ shorten_path = true, word_match = "-w", only_sort_text = true }<CR>')
-vim.keymap.set('n', '<leader>gs', ':lua require\'telescope.builtin\'.grep_string{ shorten_path = true, word_match = "-w", only_sort_text = true, search = \'\' }<CR>')
