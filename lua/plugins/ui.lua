@@ -1,5 +1,4 @@
 return {
-    {"lukas-reineke/indent-blankline.nvim"},
     {
         "akinsho/bufferline.nvim",
         event = "VeryLazy",

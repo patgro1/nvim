@@ -1,5 +1,9 @@
 return {
     {
+        "lukas-reineke/indent-blankline.nvim",
+        event = 'BufReadPost'
+    },
+    {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
         dependencies = {
