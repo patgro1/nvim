@@ -64,5 +64,24 @@ return {
         config = function ()
             require'todo-comments'.setup()
         end
+    },
+    {
+        "Vonr/align.nvim",
+        keys = {
+            {
+                "aa",
+                function()
+                    require'align'.align_to_char(1, true)
+                end,
+                mode='x'
+            },
+            {
+                "as",
+                function()
+                    require'align'.align_to_char(2, true, true)
+                end,
+                mode='x'
+            }
+        }
     }
 }
