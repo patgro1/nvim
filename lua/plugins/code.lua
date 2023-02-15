@@ -22,6 +22,7 @@ return {
         config = function ()
             vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
             local cmp = require'cmp'
+            local luasnip = require'luasnip'
             local select_opts = {behavior = cmp.SelectBehavior.Select}
             require("luasnip.loaders.from_vscode").lazy_load()
             cmp.setup ({
@@ -55,6 +56,20 @@ return {
                     ["<C-f>"] =  cmp.mapping.scroll_docs(4),
                     ["<C-space>"] =  cmp.mapping.complete(),
                     ["<CR>"] =  cmp.mapping.confirm({ select=true }), -- When nothing is selected, take first item
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        if luasnip.expand_or_jumpable() then
+                            luasnip.expand_or_jump()
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" }),
+                    ["<S-Tab>"] = cmp.mapping(function(fallback)
+                        if luasnip.jumpable(-1) then
+                            luasnip.jump(-1)
+                        else
+                            fallback()
+                        end
+                    end, { "i", "s" })
                 })
             })
         end
