@@ -9,7 +9,7 @@ return {
                     "williamboman/mason-lspconfig.nvim",
                     opts = {
                         ensure_installed = {
-                            "sumneko_lua",
+                            "lua_ls",
                             "pyright",
                             "rust_analyzer",
                             "vuels"
@@ -56,7 +56,7 @@ return {
             }
         },
         config = function ()
-            require('lspconfig').sumneko_lua.setup({
+            require('lspconfig').lua_ls.setup({
                 settings = {
                     Lua = {
                         diagnostics = {
