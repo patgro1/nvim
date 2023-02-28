@@ -92,6 +92,22 @@ return {
         end
     },
     {
+        "folke/trouble.nvim",
+        requires= 'nvim-tree/nvim-web-devicons',
+        config = function()
+            require'trouble'.setup {
+            }
+        end,
+        keys = {
+            {
+                "<leader>xx",
+                function()
+                    require("trouble").toggle()
+                end
+            }
+        }
+    },
+    {
         "Vonr/align.nvim",
         keys = {
             {
