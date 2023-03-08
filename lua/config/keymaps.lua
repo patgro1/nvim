@@ -37,3 +37,9 @@ vim.keymap.set('n', '<C-j>', '<Cmd>wincmd j<CR>')
 vim.keymap.set('n', '<C-k>', '<Cmd>wincmd k<CR>')
 vim.keymap.set('n', '<C-l>', '<Cmd>wincmd l<CR>')
 
+
+-- Quickfix open, close, next, previous
+vim.keymap.set("n", "<leader>co", "<Cmd>copen<CR>")
+vim.keymap.set("n", "<leader>cc", "<Cmd>cclose<CR>")
+vim.keymap.set("n", "<leader>cn", "<Cmd>cnext<CR>")
+vim.keymap.set("n", "<leader>cp", "<Cmd>cprevious<CR>")
