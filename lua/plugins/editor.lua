@@ -75,10 +75,22 @@ return {
         }
 
     },
-    "sindrets/diffview.nvim",
     {
-        event="BufReadPre",
-        'NvChad/nvim-colorizer.lua',
+        "sindrets/diffview.nvim",
+        keys = {
+            {
+                "<leader>gd",
+                function()
+                    if next(require("diffview.lib").views) == nil then
+                        require("diffview").open()
+                    else
+                        require("diffview").close()
+                    end
+                end,
+                desc = "open diffview",
+            },
+        },
+    },
         config = function()
             require'colorizer'.setup()
         end
