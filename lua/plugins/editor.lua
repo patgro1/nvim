@@ -1,7 +1,7 @@
 return {
     {
         "lukas-reineke/indent-blankline.nvim",
-        event = 'BufReadPost'
+        event = "BufReadPost",
     },
     {
         "nvim-neo-tree/neo-tree.nvim",
@@ -13,67 +13,66 @@ return {
             {
                 "s1n7ax/nvim-window-picker",
                 version = "1.x",
-                config = function ()
-                    require'window-picker'.setup({
+                config = function()
+                    require("window-picker").setup({
                         autoselect_one = true,
                         include_current = false,
                         filter_rules = {
                             bo = {
                                 -- Ignore these filetype for window selection
-                                filetype = { 'neo-tree', 'neo-tree-popup', 'notify' },
+                                filetype = { "neo-tree", "neo-tree-popup", "notify" },
 
                                 -- ignore there buftype for window selection
-                                buftype = { 'terminal', 'quickfix' }
+                                buftype = { "terminal", "quickfix" },
                             },
                         },
-                        other_win_hl_color = '#e35e4f'
+                        other_win_hl_color = "#e35e4f",
                     })
-                end
-            }
+                end,
+            },
         },
-        config = function ()
+        config = function()
             require("neo-tree").setup({
                 window = {
                     mappings = {
                         ["<CR>"] = "open_with_window_picker",
                         ["s"] = "split_with_window_picker",
-                        ["S"] = "vsplit_with_window_picker"
-                    }
+                        ["S"] = "vsplit_with_window_picker",
+                    },
                 },
                 filesystem = {
                     filtered_items = {
                         hide_dotfiles = false,
-                    }
-                }
+                    },
+                },
             })
         end,
         keys = {
             {
                 "<leader>fe",
                 function()
-                    require("neo-tree.command").execute({toggle = true})
+                    require("neo-tree.command").execute({ toggle = true })
                 end,
-                desc = "File explorer"
-            }
-        }
+                desc = "File explorer",
+            },
+        },
     },
     {
         "akinsho/toggleterm.nvim",
         config = function()
-            require'toggleterm'.setup({})
+            require("toggleterm").setup({})
         end,
         keys = {
             {
                 "<leader>gg",
                 function()
-                    local terminal = require'toggleterm.terminal'.Terminal
-                    local lazygit = terminal:new({ cmd="lazygit", hidden=true, direction="float"})
+                    local terminal = require("toggleterm.terminal").Terminal
+                    local lazygit = terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
                     lazygit:toggle()
                 end,
-                desc = "Open lazygit"
-            }
-        }
-
+                desc = "Open lazygit",
+            },
+        },
     },
     {
         "sindrets/diffview.nvim",
@@ -95,9 +94,11 @@ return {
         "kevinhwang91/nvim-bqf",
         ft = "qf",
     },
+    {
+        event = "BufReadPre",
+        "NvChad/nvim-colorizer.lua",
         config = function()
-            require'colorizer'.setup()
-        end
+            require("colorizer").setup()
+        end,
     },
-
 }
