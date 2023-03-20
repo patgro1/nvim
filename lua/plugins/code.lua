@@ -19,22 +19,22 @@ return {
                 }
             }
         },
-        config = function ()
-            vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-            local cmp = require'cmp'
-            local luasnip = require'luasnip'
-            local select_opts = {behavior = cmp.SelectBehavior.Select}
+        config = function()
+            vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+            local cmp = require 'cmp'
+            local luasnip = require 'luasnip'
+            local select_opts = { behavior = cmp.SelectBehavior.Select }
             require("luasnip.loaders.from_vscode").lazy_load()
-            cmp.setup ({
+            cmp.setup({
                 formatting = {
-                    format = require'lspkind'.cmp_format({
+                    format = require 'lspkind'.cmp_format({
                         mode = "symbol_text"
                     }),
 
                 },
                 snippet = {
                     expand = function(args)
-                        require'luasnip'.lsp_expand(args.body)
+                        require 'luasnip'.lsp_expand(args.body)
                     end
                 },
                 window = {
@@ -42,20 +42,30 @@ return {
                 },
                 sources = {
                     { name = 'nvim_lua' },
-                    { name = 'luasnip'  },
+                    { name = 'luasnip' },
                     { name = 'nvim_lsp' },
-                    { name = 'buffer'   },
-                    { name = 'path'     }
+                    { name = 'buffer' },
+                    { name = 'path' }
                 },
                 mapping = cmp.mapping.preset.insert({
                     ["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
                     ["<C-n>"] = cmp.mapping.select_next_item(select_opts),
                     ["<Up>"] = cmp.mapping.select_prev_item(select_opts),
                     ["<Down>"] = cmp.mapping.select_next_item(select_opts),
-                    ["<C-b>"] =  cmp.mapping.scroll_docs(-4),
-                    ["<C-f>"] =  cmp.mapping.scroll_docs(4),
-                    ["<C-space>"] =  cmp.mapping.complete(),
-                    ["<CR>"] =  cmp.mapping.confirm({ select=true }), -- When nothing is selected, take first item
+                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-space>"] = cmp.mapping.complete(),
+                    ["<CR>"] = cmp.mapping({
+                        i = function(fallback)
+                            if cmp.visible() and cmp.get_selected_entry() then
+                                cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+                            else
+                                fallback()
+                            end
+                        end,
+                        s = cmp.mapping.confirm({ select = true }),
+                        c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })
+                    }),
                     ["<Tab>"] = cmp.mapping(function(fallback)
                         if luasnip.expand_or_jumpable() then
                             luasnip.expand_or_jump()
@@ -76,26 +86,26 @@ return {
     },
     {
         "numToStr/Comment.nvim",
-        event="BufReadPost",
-        config = function ()
-            require'Comment'.setup()
-            local ft = require'Comment.ft'
+        event = "BufReadPost",
+        config = function()
+            require 'Comment'.setup()
+            local ft = require 'Comment.ft'
             ft.set('vhdl', '--%s')
         end
     },
     {
         "folke/todo-comments.nvim",
-        event="BufReadPost",
-        cmd= "TodoTelescope",
-        config = function ()
-            require'todo-comments'.setup()
+        event = "BufReadPost",
+        cmd = "TodoTelescope",
+        config = function()
+            require 'todo-comments'.setup()
         end
     },
     {
         "folke/trouble.nvim",
-        requires= 'nvim-tree/nvim-web-devicons',
+        requires = 'nvim-tree/nvim-web-devicons',
         config = function()
-            require'trouble'.setup {
+            require 'trouble'.setup {
             }
         end,
         keys = {
@@ -113,16 +123,16 @@ return {
             {
                 "aa",
                 function()
-                    require'align'.align_to_char(1, true)
+                    require 'align'.align_to_char(1, true)
                 end,
-                mode='x'
+                mode = 'x'
             },
             {
                 "as",
                 function()
-                    require'align'.align_to_char(2, true, true)
+                    require 'align'.align_to_char(2, true, true)
                 end,
-                mode='x'
+                mode = 'x'
             }
         }
     },
@@ -133,7 +143,7 @@ return {
         version = "v1.x.x",
         event = "BufReadPost",
         config = function()
-            require'nvim-surround'.setup({
+            require 'nvim-surround'.setup({
                 keymaps = {
                     insert = "<C-g>s",
                     insert_line = "<C-g>S",
