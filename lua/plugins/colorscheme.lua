@@ -5,7 +5,7 @@ return {
         lazy = false,
         config = function()
             vim.cmd([[colorscheme tokyonight-night]])
-        end
+        end,
     },
     {
         "ellisonleao/gruvbox.nvim",
@@ -28,6 +28,6 @@ return {
                 dim_inactive = false,
                 transparent_mode = false,
             })
-        end
-    }
+        end,
+    },
 }

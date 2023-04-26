@@ -11,8 +11,8 @@ return {
 					require("mason-nvim-dap").setup({
 						ensure_installed = { "codelldb", "python" },
 						automatic_setup = true,
+						handlers = {},
 					})
-					require("mason-nvim-dap").setup_handlers({})
 				end,
 			},
 			{
