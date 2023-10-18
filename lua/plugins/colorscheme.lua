@@ -1,11 +1,12 @@
 return {
     "EdenEast/nightfox.nvim",
     {
+        "xiyaowong/transparent.nvim",
+        cmd = { "TransparentEnable", "TransparentDisable", "TransparentToggle" }
+    },
+    {
         "folke/tokyonight.nvim",
         lazy = false,
-        config = function()
-            vim.cmd([[colorscheme tokyonight-night]])
-        end,
     },
     {
         "ellisonleao/gruvbox.nvim",
@@ -21,7 +22,7 @@ return {
                 invert_signs = false,
                 invert_tabline = false,
                 invert_intend_guides = false,
-                inverse = true, -- invert background for search, diffs, statuslines and errors
+                inverse = true,    -- invert background for search, diffs, statuslines and errors
                 contrast = "hard", -- can be "hard", "soft" or empty string
                 palette_overrides = {},
                 overrides = {},
@@ -30,4 +31,13 @@ return {
             })
         end,
     },
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        priority = 1000,
+        lazy = false,
+        config = function()
+            vim.cmd([[colorscheme catppuccin-mocha]])
+        end,
+    }
 }
