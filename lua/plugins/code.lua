@@ -123,14 +123,20 @@ return {
             {
                 "aa",
                 function()
-                    require 'align'.align_to_char(1, true)
+                    require 'align'.align_to_char({
+                        preview = true,
+                        length = 1
+                    })
                 end,
                 mode = 'x'
             },
             {
                 "as",
                 function()
-                    require 'align'.align_to_char(2, true, true)
+                    require 'align'.align_to_char({
+                        preview = true,
+                        length = 2
+                    })
                 end,
                 mode = 'x'
             }
