@@ -7,7 +7,7 @@ return {
             "nvim-tree/nvim-web-devicons"
         },
         config = function()
-            require'bufferline'.setup({
+            require 'bufferline'.setup({
                 options = {
                     diagnostics = "nvim_lsp",
                     diagnostics_indicator = function(count, level, _, _)
@@ -31,9 +31,15 @@ return {
         dependencies = {
             "nvim-tree/nvim-web-devicons"
         },
-        config = function ()
-            require'utils.lualine'.config_lualine()
+        config = function()
+            require 'utils.lualine'.config_lualine()
+        end
+    },
+    {
+        "karb94/neoscroll.nvim",
+        event = "BufReadPre",
+        config = function()
+            require('neoscroll').setup()
         end
     }
 }
-
