@@ -27,7 +27,7 @@ return {
                         "cmake",
                         "latex",
                         "rust",
-                        -- "vhdl"
+                        "vhdl"
                     },
                     highlight = {
                         enable = true,
@@ -48,10 +48,13 @@ return {
                 strategy = {
                     [''] = rainbow_delimiters.strategy['global'],
                     vim = rainbow_delimiters.strategy['local'],
+                    vhdl = rainbow_delimiters.strategy['local'],
                 },
                 query = {
                     [''] = 'rainbow-delimiters',
-                    lua = 'rainbow-blocks'
+                    lua = 'rainbow-blocks',
+                    vhdl = 'rainbow-delimiters'
+
                 },
                 highlight = {
                     'RainbowDelimiterRed',
