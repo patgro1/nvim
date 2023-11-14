@@ -17,17 +17,19 @@ return {
                 filetype = "vhdl",                          -- if filetype does not match the parser name
                 require("nvim-treesitter.configs").setup({
                     ensure_installed = {
-                        "python",
-                        "cpp",
-                        "verilog",
-                        -- "javascript",
-                        "lua",
-                        "yaml",
                         "bash",
                         "cmake",
+                        "cpp",
+                        "fish",
+                        "javascript",
                         "latex",
+                        "lua",
+                        "python",
+                        "rst",
                         "rust",
-                        "vhdl"
+                        "verilog",
+                        "vhdl",
+                        "yaml",
                     },
                     highlight = {
                         enable = true,
