@@ -65,8 +65,21 @@ return {
                 sumneko_lua = {
                     settings = {
                         Lua = {
+                            runtime = {
+                                version = "LuaJIT",
+                            },
+                            format = {
+                                enable = true,
+                                defaultConfig = {
+                                    indent_style = "space",
+                                    indent_size = "4",
+                                },
+                            },
                             workspace = {
                                 checkThirdParty = false,
+                                library = {
+                                    vim.env.VIMRUNTIME,
+                                },
                             },
                             completion = {
                                 callSnippet = "Replace",
@@ -81,12 +94,39 @@ return {
             require("lspconfig").lua_ls.setup({
                 settings = {
                     Lua = {
-                        diagnostics = {
-                            globals = { "vim" },
+                        runtime = {
+                            version = "LuaJIT",
+                        },
+                        format = {
+                            enable = true,
+                            defaultConfig = {
+                                indent_style = "space",
+                                indent_size = "2",
+                            },
+                        },
+                        workspace = {
+                            checkThirdParty = false,
+                            library = {
+                                vim.env.VIMRUNTIME,
+                            },
+                        },
+                        completion = {
+                            callSnippet = "Replace",
                         },
                     },
                 },
-                on_attach = require("plugins.lsp.keymaps").on_attach,
+                on_attach = function(client, bufnr)
+                    require("plugins.lsp.keymaps").on_attach()
+                    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+                    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+                    vim.api.nvim_create_autocmd("BufWritePre", {
+                        group = augroup,
+                        buffer = bufnr,
+                        callback = function()
+                            vim.lsp.buf.format({ bufnr = bufnr })
+                        end,
+                    })
+                end
             })
             require("lspconfig").jedi_language_server.setup({
                 on_attach = require("plugins.lsp.keymaps").on_attach,
@@ -125,7 +165,6 @@ return {
                     null_ls.builtins.diagnostics.flake8,
                     null_ls.builtins.diagnostics.mypy,
                     null_ls.builtins.formatting.black,
-                    null_ls.builtins.formatting.stylua,
                 },
                 on_attach = function(client, bufnr)
                     if client.supports_method("textDocument/formatting") then
