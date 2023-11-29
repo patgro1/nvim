@@ -1,4 +1,4 @@
-require('Comment').setup()
-local ft = require('Comment.ft')
+require("Comment").setup()
+local ft = require("Comment.ft")
 
-ft.set('vhdl', '--%s')
+ft.set("vhdl", "--%s")

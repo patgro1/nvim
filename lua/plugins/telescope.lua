@@ -17,20 +17,20 @@ return {
         config = function()
             require('telescope').setup()
         end,
-        cmd = {"TodoTelescope"},
+        cmd = { "TodoTelescope" },
         keys = {
             {
                 "<leader>bb",
                 function()
-                    require'telescope.builtin'.buffers()
+                    require 'telescope.builtin'.buffers()
                 end,
                 desc = "Telescope buffers"
             },
             {
                 "<leader>ff",
-                function ()
-                    require'telescope.builtin'.find_files({
-                        find_command = {'rg', '--files', '--hidden', '-g', '!.git' },
+                function()
+                    require 'telescope.builtin'.find_files({
+                        find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
                     })
                 end,
                 desc = "Find all files"
@@ -38,18 +38,19 @@ return {
             {
                 "<leader>fg",
                 function()
-                    require'telescope.builtin'.git_files()
+                    require 'telescope.builtin'.git_files()
                 end,
                 desc = "Find in git files"
             },
             {
                 "<leader><space>",
                 function()
-                    local _, ret, _ = require'telescope.utils'.get_os_command_output({"git", "rev-parse", "--is-inside-work-tree"})
+                    local _, ret, _ = require 'telescope.utils'.get_os_command_output({ "git", "rev-parse",
+                        "--is-inside-work-tree" })
                     if ret == 0 then
-                        require'telescope.builtin'.git_files()
+                        require 'telescope.builtin'.git_files()
                     else
-                        require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' },})
+                        require 'telescope.builtin'.find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' }, })
                     end
                 end,
                 desc = "Find in project files (if not git, find all files)"
@@ -57,14 +58,14 @@ return {
             {
                 "<leader>fh",
                 function()
-                    require'telescope.builtin'.oldfiles()
+                    require 'telescope.builtin'.oldfiles()
                 end,
                 desc = "Find file in history"
             },
             {
                 "<leader>fp",
                 function()
-                    require'telescope.builtin'.git_files({
+                    require 'telescope.builtin'.git_files({
                         prompt_title = "< VimRC >",
                         cwd = "$HOME/.config/nvim"
                     })
@@ -74,8 +75,8 @@ return {
             {
                 "<leader>fd",
                 function()
-                    require'telescope.builtin'.find_files({
-                        find_command = {'rg', '--files', '--hidden', '-g', '!.git' },
+                    require 'telescope.builtin'.find_files({
+                        find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
                         prompt_title = "< Dotfiles >",
                         cwd = "$HOME/dotfiles"
                     })
@@ -85,7 +86,7 @@ return {
             {
                 "<leader>hh",
                 function()
-                    require'telescope.builtin'.help_tags()
+                    require 'telescope.builtin'.help_tags()
                 end,
                 desc = "Search in help"
             },
@@ -96,16 +97,16 @@ return {
             },
             {
                 "<leader>ss",
-                function ()
-                    require'telescope.builtin'.grep_string{
+                function()
+                    require 'telescope.builtin'.grep_string {
                         shorten_path = true, word_match = "-w", only_sort_text = true
                     }
                 end
             },
             {
                 "<leader>gs",
-                function ()
-                    require'telescope.builtin'.live_grep{
+                function()
+                    require 'telescope.builtin'.live_grep {
                         shorten_path = true, word_match = "-w", only_sort_text = true, search = "\'\'" }
                 end
             }
