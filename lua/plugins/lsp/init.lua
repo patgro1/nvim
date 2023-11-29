@@ -12,7 +12,6 @@ return {
                             "lua_ls",
                             "jedi_language_server",
                             "rust_analyzer",
-                            "vuels",
                         },
                     },
                     config = function(_, opts)
@@ -115,7 +114,7 @@ return {
                         },
                     },
                 },
-                on_attach = function(client, bufnr)
+                on_attach = function(_, bufnr)
                     require("plugins.lsp.keymaps").on_attach()
                     local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
                     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })

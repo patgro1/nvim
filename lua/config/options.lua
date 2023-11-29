@@ -1,9 +1,3 @@
-local function apply_options(scope, options)
-    for opt, val in pairs(options) do
-        scope[opt] = val
-    end
-end
-
 local options = {
     termguicolors = true,                -- Enable 24 bits color in terminal
     guicursor = "a:block,i-ci-ve:ver25", -- Set the gui cursor to nothing for each mode
