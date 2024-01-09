@@ -32,7 +32,7 @@ return {
             "nvim-tree/nvim-web-devicons"
         },
         config = function()
-            require 'utils.lualine'.config_lualine()
+            require 'pat.lualine'.config_lualine()
         end
     },
     {
@@ -41,5 +41,9 @@ return {
         config = function()
             require('neoscroll').setup()
         end
-    }
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        event = "BufReadPost",
+    },
 }

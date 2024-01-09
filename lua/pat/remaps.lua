@@ -40,3 +40,11 @@ vim.keymap.set("n", "<leader>co", "<Cmd>copen<CR>")
 vim.keymap.set("n", "<leader>cc", "<Cmd>cclose<CR>")
 vim.keymap.set("n", "<leader>cn", "<Cmd>cnext<CR>")
 vim.keymap.set("n", "<leader>cp", "<Cmd>cprevious<CR>")
+
+-- Open lazy git in a floating window
+local open_lazy_git = function()
+    local terminal = require("toggleterm.terminal").Terminal
+    local lazygit = terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
+    lazygit:toggle()
+end
+vim.keymap.set("n", "<leader>lg", open_lazy_git)

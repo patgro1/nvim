@@ -1,5 +1,4 @@
 return {
-    "EdenEast/nightfox.nvim",
     {
         "xiyaowong/transparent.nvim",
         cmd = { "TransparentEnable", "TransparentDisable", "TransparentToggle" }
