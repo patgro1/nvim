@@ -24,6 +24,7 @@ return {
                         "javascript",
                         "latex",
                         "lua",
+                        "norg",
                         "python",
                         "rst",
                         "rust",
