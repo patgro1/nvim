@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require "pat.remaps"
 require "pat.options"
 require "pat.autocommands"
+require "pat.internal_config"
 
 -- Setting up Lazy with plugins spec path
 require("lazy").setup("plugins")
