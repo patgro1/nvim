@@ -2,7 +2,6 @@ return {
     {
         "akinsho/bufferline.nvim",
         event = "VeryLazy",
-        version = "v3.x",
         dependencies = {
             "nvim-tree/nvim-web-devicons"
         },
@@ -38,6 +37,7 @@ return {
     {
         "karb94/neoscroll.nvim",
         event = "BufReadPre",
+        version = "0.2.0",
         config = function()
             require('neoscroll').setup({
                 -- Force no mapping to be done to prevent mapping from being overwritten

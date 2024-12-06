@@ -4,41 +4,33 @@ return {
         "nvim-treesitter/nvim-treesitter",
         event = "BufReadPost",
         config = function()
-            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-            parser_config.vhdl = {
-                install_info = {
-                    url = "https://github.com/alemuller/tree-sitter-vhdl", -- local path or git repo
-                    files = { "src/parser.c" },
-                    -- optional entries:
-                    branch = "main",                        -- default branch in case of git repo if different from master
-                    generate_requires_npm = false,          -- if stand-alone parser without npm dependencies
-                    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = {
+                    "bash",
+                    "cmake",
+                    "cpp",
+                    "fish",
+                    "go",
+                    "javascript",
+                    "latex",
+                    "lua",
+                    "norg",
+                    "python",
+                    "rst",
+                    "rust",
+                    "systemverilog",
+                    "verilog",
+                    "vhdl",
+                    "yaml",
                 },
-                filetype = "vhdl",                          -- if filetype does not match the parser name
-                require("nvim-treesitter.configs").setup({
-                    ensure_installed = {
-                        "bash",
-                        "cmake",
-                        "cpp",
-                        "fish",
-                        "javascript",
-                        "latex",
-                        "lua",
-                        "norg",
-                        "python",
-                        "rst",
-                        "rust",
-                        "verilog",
-                        "vhdl",
-                        "yaml",
-                    },
-                    highlight = {
-                        enable = true,
-                        -- disable = { "vhdl" },
-                        additional_vim_regex_highlighting = { "python" },
-                    },
-                }),
-            }
+                highlight = {
+                    enable = true,
+                    -- disable = { "vhdl" },
+                    additional_vim_regex_highlighting = { "python" },
+                }
+                --     },
+                -- }),
+            })
         end,
         build = ":TSUpdate",
     },

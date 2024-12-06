@@ -27,8 +27,8 @@ return {
                     require("mason-lspconfig").setup({
                         ensure_installed = {
                             "lua_ls",
-                            "jedi_language_server",
-                            "rust_analyzer",
+                            "pyright",
+                            "gopls"
                         }
                     })
                 end
@@ -65,7 +65,9 @@ return {
         },
 
         config = function()
-            require("lspconfig").lua_ls.setup({
+            local lspconfig = require("lspconfig")
+            local configs = require("lspconfig.configs")
+            lspconfig.lua_ls.setup({
                 settings = {
                     Lua = {
                         runtime = {
@@ -103,7 +105,36 @@ return {
                     })
                 end
             })
+            if not configs.vhdl_ls then
+                configs.vhdl_ls = {
+                    default_config = {
+                        cmd = { '/home/pgrogan/workspace/perso/rust_hdl/target/release/vhdl_ls' },
+                        root_dir = lspconfig.util.root_pattern('vhdl_ls.toml'),
+                        filetypes = { 'vhdl' },
+                    },
+                }
+            end
+            -- lspconfig.vhdl_ls.setup({
+            --     on_attach = function(_, bufnr)
+            --         set_lsp_keymaps()
+            --     end
+            -- })
+
+            -- lspconfig.jedi_language_server.setup {}
+            lspconfig.pyright.setup {}
+            lspconfig.gopls.setup {
+                settings = {
+                    gopls = {
+                        gofumpt = true
+                    }
+                }
+            }
         end,
+    },
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^4', -- Recommended
+        ft = { 'rust' },
     },
     {
         "folke/trouble.nvim",

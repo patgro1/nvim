@@ -8,27 +8,11 @@ return {
         lazy = false,
     },
     {
-        "ellisonleao/gruvbox.nvim",
-        lazy = true,
+        "https://github.com/sainnhe/gruvbox-material",
         config = function()
-            require("gruvbox").setup({
-                undercurl = true,
-                underline = true,
-                bold = true,
-                italic = true,
-                strikethrough = true,
-                invert_selection = false,
-                invert_signs = false,
-                invert_tabline = false,
-                invert_intend_guides = false,
-                inverse = true,    -- invert background for search, diffs, statuslines and errors
-                contrast = "hard", -- can be "hard", "soft" or empty string
-                palette_overrides = {},
-                overrides = {},
-                dim_inactive = false,
-                transparent_mode = false,
-            })
-        end,
+            vim.cmd([[let g:gruvbox_material_background = 'soft']])
+            vim.cmd([[colorscheme gruvbox-material]])
+        end
     },
     {
         "catppuccin/nvim",
@@ -36,7 +20,7 @@ return {
         priority = 1000,
         lazy = false,
         config = function()
-            vim.cmd([[colorscheme catppuccin-mocha]])
+            -- vim.cmd([[colorscheme catppuccin-mocha]])
         end,
     }
 }

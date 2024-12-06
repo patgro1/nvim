@@ -9,6 +9,10 @@ return {
         end
     },
     {
+        'NvChad/nvim-colorizer.lua',
+        config = true
+    },
+    {
         "folke/todo-comments.nvim",
         event = "BufReadPost",
         cmd = "TodoTelescope",
@@ -17,29 +21,9 @@ return {
         end
     },
     {
-        "Vonr/align.nvim",
-        keys = {
-            {
-                "aa",
-                function()
-                    require 'align'.align_to_char({
-                        preview = true,
-                        length = 1
-                    })
-                end,
-                mode = 'x'
-            },
-            {
-                "as",
-                function()
-                    require 'align'.align_to_char({
-                        preview = true,
-                        length = 2
-                    })
-                end,
-                mode = 'x'
-            }
-        }
+        'echasnovski/mini.align',
+        version = '*',
+        config = true
     },
     {
         -- aliases for surround char:
@@ -72,5 +56,12 @@ return {
                 },
             })
         end
-    }
+    },
+    -- {
+    --     "linrongbin16/gentags.nvim",
+    --     config = function()
+    --         require('gentags').setup()
+    --     end,
+    --     event = "BufReadPre"
+    -- },
 }

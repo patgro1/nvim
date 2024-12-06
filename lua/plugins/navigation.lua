@@ -62,6 +62,19 @@ return {
         },
     },
     {
+        'echasnovski/mini.files',
+        version = '*',
+        keys = {
+            {
+                "<leader>me",
+                function()
+                    require("mini.files").open()
+                end
+            }
+        },
+        config = true
+    },
+    {
         --local harpoon = require("harpoon")
         --
         ---- REQUIRED
@@ -91,7 +104,7 @@ return {
             {
                 "<leader>a",
                 function()
-                    require("harpoon"):list():append()
+                    require("harpoon"):list():add()
                 end,
                 desc = "Add file to harpoon"
             },

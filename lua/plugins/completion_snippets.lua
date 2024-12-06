@@ -11,7 +11,7 @@ end
 
 return {
     "hrsh7th/nvim-cmp",
-    --event = "InsertEnter",
+    event = "InsertEnter",
     dependencies = {
         -- sources
         "onsails/lspkind-nvim",
@@ -19,6 +19,10 @@ return {
         'hrsh7th/cmp-buffer',
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-nvim-lua',
+        -- {
+        --     'quangnguyen30192/cmp-nvim-tags',
+        --     ft = { 'vhdl' }
+        -- },
         'ray-x/cmp-treesitter',
 
         -- snippets
@@ -31,6 +35,7 @@ return {
         },
     },
     config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
         vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
         local cmp = require('cmp')
         local luasnip = require 'luasnip'
@@ -88,6 +93,7 @@ return {
         local default_cmp_sources = cmp.config.sources({
             { name = 'nvim_lsp' },
             { name = 'luasnip' },
+            -- { name = 'tags' }
         }, {
             { name = 'buffer' },
             { name = 'path' }
