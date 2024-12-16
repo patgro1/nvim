@@ -29,3 +29,5 @@ local options = {
 for opt, val in pairs(options) do
     vim.opt[opt] = val
 end
+
+
