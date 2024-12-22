@@ -20,8 +20,7 @@ return {
             -- default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, via `opts_extend`
             sources = {
-                -- Add ctags to the list
-                default = { "lsp", "path", "snippets", "buffer", "ctags" },
+                default = { "lsp", "path", "snippets", "buffer" },
                 -- cmdline = {},
             },
         },
