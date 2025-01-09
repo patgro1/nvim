@@ -76,7 +76,7 @@ return {
         {
             "<leader>fp",
             function()
-                require("telescope.builtin").git_files({
+                require("telescope.builtin").find_files({
                     prompt_title = "< VimRC >",
                     cwd = "$HOME/.config/nvim",
                 })

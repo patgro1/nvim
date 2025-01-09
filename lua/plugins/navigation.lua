@@ -66,6 +66,12 @@ return {
     {
         "echasnovski/mini.files",
         version = "*",
+        dependencies = {
+            {
+                "echasnovski/mini.icons",
+                config = true,
+            },
+        },
         keys = {
             {
                 "<leader>me",
@@ -75,5 +81,19 @@ return {
             },
         },
         config = true,
+    },
+
+    {
+        "echasnovski/mini.bufremove",
+        config = true,
+        keys = {
+            {
+                "<leader>bd",
+                function()
+                    require("mini.bufremove").unshow()
+                end,
+                desc = "Delete current buffer",
+            },
+        },
     },
 }
