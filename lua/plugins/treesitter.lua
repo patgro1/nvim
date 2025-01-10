@@ -26,6 +26,9 @@ return {
                 -- disable = { "vhdl" },
                 additional_vim_regex_highlighting = { "python" },
             },
+            context_commentstring = {
+                enable = true,
+            },
         },
         build = ":TSUpdate",
         config = function(_, opts)
