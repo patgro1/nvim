@@ -6,12 +6,12 @@ require("which-key").add({
     },
     {
         "<leader>bp",
-        "<cmd>BufferPrevious<cr>",
+        "<cmd>bprev<cr>",
         desc = "Move to previous buffer",
     },
     {
         "<leader>bn",
-        "<cmd>BufferNext<cr>",
+        "<cmd>bnext<cr>",
         desc = "Move to next buffer",
     },
 })

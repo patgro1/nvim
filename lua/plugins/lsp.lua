@@ -35,7 +35,6 @@ return {
                     })
                 end,
             },
-            "netmute/ctags-lsp.nvim",
             "saghen/blink.cmp",
         },
         config = function()
@@ -82,13 +81,6 @@ return {
                         },
                     },
                 },
-                on_attach = function(_, bufnr)
-                    set_lsp_keymaps()
-                end,
-            })
-            require("lspconfig").ctags_lsp.setup({
-                capabilities = capabilities,
-                filetypes = { "vhdl" }, -- Or whatever language you want to use it for
                 on_attach = function(_, bufnr)
                     set_lsp_keymaps()
                 end,

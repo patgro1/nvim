@@ -90,7 +90,7 @@ return {
             {
                 "<leader>bd",
                 function()
-                    require("mini.bufremove").unshow()
+                    require("mini.bufremove").delete()
                 end,
                 desc = "Delete current buffer",
             },
