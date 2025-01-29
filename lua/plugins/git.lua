@@ -31,4 +31,9 @@ return {
             },
         },
     },
+    {
+        "sindrets/diffview.nvim", -- optional - Diff integration
+        config = true,
+        cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+    },
 }
