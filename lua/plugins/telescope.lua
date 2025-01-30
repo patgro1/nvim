@@ -118,7 +118,7 @@ return {
             desc = "Search for word",
         },
         {
-            "<leader>gs",
+            "<leader>sp",
             function()
                 require("telescope.builtin").live_grep({
                     shorten_path = true,

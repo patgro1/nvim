@@ -1,39 +1,29 @@
 return {
     {
-        "echasnovski/mini-git",
-        version = "*",
-        main = "mini.git",
-        config = true,
-    },
-    {
-        "echasnovski/mini.diff",
-        version = "*",
-        config = true,
-    },
-    {
-        "NeogitOrg/neogit",
+        'tanvirtin/vgit.nvim',
+        branch = "main",
         dependencies = {
-            "nvim-lua/plenary.nvim", -- required
-            "sindrets/diffview.nvim", -- optional - Diff integration
-
-            -- Only one of these is needed.
-            "nvim-telescope/telescope.nvim", -- optional
+            'nvim-lua/plenary.nvim',
+            'nvim-tree/nvim-web-devicons'
         },
-        config = true,
+        event = 'VimEnter',
         keys = {
-            { "<leader>g", group = "git" },
-            {
-                "<leader>gg",
-                function()
-                    require("neogit").open()
-                end,
-                desc = "Open neogit",
-            },
+            { "<c-k>",       function() require('vgit').hunk_up() end,                desc = "Go to previous hunk" },
+            { "<c-j>",       function() require('vgit').hunk_down() end,              desc = "Go to next hunk" },
+            { "<leader>g",   group = "git" },
+            { "<leader>gs",  function() require('vgit').buffer_hunk_stage() end,      desc = "Stage current hunk" },
+            { "<leader>gr",  function() require('vgit').buffer_hunk_reset() end,      desc = "Reset current hunk" },
+            { "<leader>gp",  function() require('vgit').buffer_hunk_preview() end,    desc = "Diff current hunk" },
+            { "<leader>gb",  function() require('vgit').buffer_blame_preview() end,   desc = "Opens git blame for current line" },
+            { "<leader>gf",  function() require('vgit').buffer_diff_preview() end,    desc = "Diff current buffer" },
+            { "<leader>gh",  function() require('vgit').buffer_history_preview() end, desc = "Open diffs with log list" },
+            { "<leader>gu",  function() require('vgit').buffer_reset() end,           desc = "Reset current buffer" },
+            { "<leader>gd",  function() require('vgit').project_diff_preview() end,   desc = "Open diff for whole project" },
+            { "<leader>gt",  group = "git toggle" },
+            { "<leader>gtb", function() require('vgit').toggle_live_blame() end,      desc = "Toggle git blame one lines" },
+            { "<leader>gtg", function() require('vgit').toggle_live_gutter() end,     desc = "Toggle git signs" },
+
         },
-    },
-    {
-        "sindrets/diffview.nvim", -- optional - Diff integration
-        config = true,
-        cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-    },
+        config = function() require('vgit').setup() end
+    }
 }
