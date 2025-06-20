@@ -11,4 +11,11 @@ return {
         enabled = vim.fn.has("nvim-0.10.0") == 1,
     },
     { "echasnovski/mini.align", version = "*", config = true, event = "BufReadPre" },
+    {
+        "catgoose/nvim-colorizer.lua",
+        event = "BufReadPre",
+        opts = { -- set to setup table
+        },
+    },
+
 }
