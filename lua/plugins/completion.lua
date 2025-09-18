@@ -3,7 +3,7 @@ return {
         "saghen/blink.cmp",
         lazy = false, -- Handled internally by the plugin
 
-        version = "v0.*",
+        version = "v1.*",
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
         opts = {

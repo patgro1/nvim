@@ -14,8 +14,13 @@ return {
     {
         "catgoose/nvim-colorizer.lua",
         event = "BufReadPre",
-        opts = { -- set to setup table
-        },
+        config = function()
+            local align = require('mini.align')
+            align.setup({
+                step = {
+                    pre_justify = { align.gen_step.filter('n == 1') }
+                }
+            })
+        end,
     },
-
 }

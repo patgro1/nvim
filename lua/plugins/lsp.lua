@@ -30,6 +30,7 @@ return {
                 "williamboman/mason-lspconfig.nvim",
                 config = function()
                     require("mason-lspconfig").setup({
+                        automatic_enable = { "lua_ls", "rust_analyzer" },
                         ensure_installed = { "lua_ls", "rust_analyzer" },
                     })
                 end,
@@ -50,12 +51,19 @@ return {
                 },
             })
             local capabilities = require("blink.cmp").get_lsp_capabilities()
-            require("lspconfig").pylsp.setup({
+            vim.lsp.config('pylsp', {
                 capabilities = capabilities,
                 on_attach = function(_, _)
                     set_lsp_keymaps()
                 end,
             })
+            vim.lsp.config('clangd', {
+                capabilities = capabilities,
+                on_attach = function(_, _)
+                    set_lsp_keymaps()
+                end,
+            })
+            vim.lsp.enable({ 'pylsp', 'clangd' })
         end,
     },
     {
