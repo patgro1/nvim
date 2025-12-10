@@ -14,4 +14,9 @@ require("which-key").add({
         "<cmd>bnext<cr>",
         desc = "Move to next buffer",
     },
+    {
+        "<leader>,",
+        "<cmd>nohl<cr>",
+        desc = "Reset search highlights",
+    },
 })
