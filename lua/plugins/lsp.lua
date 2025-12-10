@@ -64,6 +64,28 @@ return {
                 end,
             })
             vim.lsp.enable({ 'pylsp', 'clangd' })
+
+            local lspconfig = require("lspconfig")
+            local configs = require("lspconfig.configs")
+            if not configs.oxide_hdl then
+                configs.oxide_hdl = {
+                    default_config = {
+                        cmd = { "/home/pat/workspace/oxide-hdl/target/release/oxide-hdl" },
+                        filetypes = { "vhdl" },
+                        root_dir = function(fname)
+                            return lspconfig.util.root_pattern(".git")(fname) or vim.fn.getcwd()
+                        end,
+                        settings = {},
+                    }
+                }
+            end
+            lspconfig.oxide_hdl.setup({
+                capabilities = capabilities,
+                on_attach = function(_, _)
+                    set_lsp_keymaps()
+                    vim.notify("Oxide-hdl attached!!!", vim.log.levels.INFO)
+                end,
+            })
         end,
     },
     {
@@ -72,13 +94,16 @@ return {
         lazy = false,   -- This plugin is already lazy
         dependencies = { "mfussenegger/nvim-dap" },
         config = function()
-            local extension_path = "/home/pgrogan/.local/bin/extension/"
-            local codelldb_path = extension_path .. "adapter/codelldb"
-            local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+            -- local extension_path = "/home/pgrogan/.local/bin/extension/"
+            -- local codelldb_path = extension_path .. "adapter/codelldb"
+            -- local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
             local cfg = require("rustaceanvim.config")
             vim.g.rustaceanvim = {
-                dap = {
-                    adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+                -- dap = {
+                --     adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+                -- },
+                tools = {
+                    enable_clippy = true, -- Enable Clippy
                 },
             }
         end,
