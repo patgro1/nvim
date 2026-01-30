@@ -66,5 +66,13 @@ return {
             inactive_winbar = {},
             extensions = {}
         }
+    },
+    {
+        'Bekaboo/dropbar.nvim',
+        -- optional, but required for fancy icons
+        dependencies = {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            'nvim-tree/nvim-web-devicons',
+        }
     }
 }

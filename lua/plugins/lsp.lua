@@ -1,13 +1,27 @@
 local set_lsp_keymaps = function()
     local wk = require("which-key")
     wk.add({
-        { "<leader>l",    group = "lsp" },
-        { "<leader>lgd",  vim.lsp.buf.definition,  desc = "LSP goto definition" },
-        { "<leader>lgD",  vim.lsp.buf.declaration, desc = "LSP goto declaration" },
-        { "<leader>lK",   vim.lsp.buf.hover,       desc = "LSP Hover" },
-        { "<leader>lvrr", vim.lsp.buf.references,  desc = "LSP Show References" },
+        { "<leader>l", group = "lsp" },
+        { "gd",        vim.lsp.buf.definition,  desc = "LSP goto definition" },
+        { "gD",        vim.lsp.buf.declaration, desc = "LSP goto declaration" },
+        { "K",         vim.lsp.buf.hover,       desc = "LSP Hover" },
+        { "grr",       vim.lsp.buf.references,  desc = "LSP Show References" },
     })
 end
+
+local set_rust_lsp_keymaps = function()
+    local wk = require("which-key")
+    wk.add({
+        { "<leader>l",  group = "lsp" },
+        { "gd",         vim.lsp.buf.definition,                                 desc = "LSP goto definition" },
+        { "gD",         vim.lsp.buf.declaration,                                desc = "LSP goto declaration" },
+        { "K",          vim.lsp.buf.hover,                                      desc = "LSP Hover" },
+        { "<leader>K",  function() vim.cmd.RustLsp({ 'hover', 'actions' }) end, desc = "LSP Hover Actions" },
+        { "grr",        vim.lsp.buf.references,                                 desc = "LSP Show References" },
+        { "<leader>ee", function() vim.cmd.RustLsp('explainError') end,         desc = "Explain the error in popup window" },
+    })
+end
+
 
 return {
     {
@@ -30,8 +44,8 @@ return {
                 "williamboman/mason-lspconfig.nvim",
                 config = function()
                     require("mason-lspconfig").setup({
-                        automatic_enable = { "lua_ls", "rust_analyzer" },
-                        ensure_installed = { "lua_ls", "rust_analyzer" },
+                        automatic_enable = { "lua_ls", },
+                        ensure_installed = { "lua_ls" },
                     })
                 end,
             },
@@ -97,8 +111,12 @@ return {
             -- local extension_path = "/home/pgrogan/.local/bin/extension/"
             -- local codelldb_path = extension_path .. "adapter/codelldb"
             -- local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-            local cfg = require("rustaceanvim.config")
             vim.g.rustaceanvim = {
+                server = {
+                    on_attach = function(_, _)
+                        set_rust_lsp_keymaps()
+                    end
+                },
                 -- dap = {
                 --     adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
                 -- },
