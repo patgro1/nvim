@@ -80,7 +80,12 @@ return {
                 end,
             },
         },
-        config = true,
+        opts = {
+            windows = {
+                width_focus = 150,
+                width_nofocus = 25,
+            },
+        },
     },
 
     {

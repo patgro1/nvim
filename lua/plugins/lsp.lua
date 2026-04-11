@@ -6,6 +6,9 @@ local set_lsp_keymaps = function()
         { "gD",        vim.lsp.buf.declaration, desc = "LSP goto declaration" },
         { "K",         vim.lsp.buf.hover,       desc = "LSP Hover" },
         { "grr",       vim.lsp.buf.references,  desc = "LSP Show References" },
+        { "<leader>la", vim.lsp.buf.code_action, desc = "LSP Code Actions", mode = { "n", "v" } },
+        { "<leader>lr", vim.lsp.buf.rename,     desc = "LSP Rename" },
+        { "<leader>lf", vim.lsp.buf.format,     desc = "LSP Format" },
     })
 end
 
@@ -16,9 +19,12 @@ local set_rust_lsp_keymaps = function()
         { "gd",         vim.lsp.buf.definition,                                 desc = "LSP goto definition" },
         { "gD",         vim.lsp.buf.declaration,                                desc = "LSP goto declaration" },
         { "K",          vim.lsp.buf.hover,                                      desc = "LSP Hover" },
-        { "<leader>K",  function() vim.cmd.RustLsp({ 'hover', 'actions' }) end, desc = "LSP Hover Actions" },
         { "grr",        vim.lsp.buf.references,                                 desc = "LSP Show References" },
-        { "<leader>ee", function() vim.cmd.RustLsp('explainError') end,         desc = "Explain the error in popup window" },
+        { "<leader>la", vim.lsp.buf.code_action,                                desc = "LSP Code Actions", mode = { "n", "v" } },
+        { "<leader>lr", vim.lsp.buf.rename,                                     desc = "LSP Rename" },
+        { "<leader>lf", vim.lsp.buf.format,                                     desc = "LSP Format" },
+        { "<leader>lh", function() vim.cmd.RustLsp({ 'hover', 'actions' }) end, desc = "LSP Hover Actions" },
+        { "<leader>le", function() vim.cmd.RustLsp('explainError') end,         desc = "Explain the error in popup window" },
     })
 end
 
@@ -84,7 +90,7 @@ return {
             if not configs.oxide_hdl then
                 configs.oxide_hdl = {
                     default_config = {
-                        cmd = { "/home/pat/workspace/oxide-hdl/target/release/oxide-hdl" },
+                        cmd = { "/home/pat/workspace/oxide-hdl/target/release/oxide-hdl", "--record-trace" },
                         filetypes = { "vhdl" },
                         root_dir = function(fname)
                             return lspconfig.util.root_pattern(".git")(fname) or vim.fn.getcwd()

@@ -1,16 +1,5 @@
 return {
     {
-        "echasnovski/mini-git",
-        version = "*",
-        main = "mini.git",
-        config = true,
-    },
-    {
-        "echasnovski/mini.diff",
-        version = "*",
-        config = true,
-    },
-    {
         "NeogitOrg/neogit",
         dependencies = {
             "nvim-lua/plenary.nvim", -- required
@@ -29,11 +18,30 @@ return {
                 end,
                 desc = "Open neogit",
             },
+            {
+                "<leader>gl",
+                function()
+                    require("config.lazygit").open_lazygit_file_log()
+                end,
+                desc = "Lazygit file log",
+            },
+            {
+                "<leader>gL",
+                function()
+                    require("config.lazygit").open_lazygit()
+                end,
+                desc = "Lazygit",
+            },
         },
     },
     {
         "sindrets/diffview.nvim", -- optional - Diff integration
         config = true,
         cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+    },
+    {
+        "lewis6991/gitsigns.nvim",
+        version = "*",
+        config = true,
     },
 }

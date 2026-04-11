@@ -1,31 +1,38 @@
 return {
     {
         "saghen/blink.cmp",
-        lazy = false, -- Handled internally by the plugin
-
+        lazy = false,
         version = "v1.*",
-        ---@module 'blink.cmp'
-        ---@type blink.cmp.Config
         opts = {
+            -- 1. ADD THIS 'completion' BLOCK
+            completion = {
+                menu = {
+                    draw = {
+                        -- We define 3 columns.
+                        -- The middle column contains the name (label) AND the detail (label_description)
+                        columns = {
+                            { "kind_icon" },
+                            { "label",    "label_description", gap = 1 }
+                        },
+                    },
+                },
+                -- Optional: Ensure documentation window pops up automatically
+                documentation = {
+                    auto_show = false,
+                    auto_show_delay_ms = 500,
+                },
+            },
+
+            -- ... Keep your existing settings below ...
             keymap = { preset = "default" },
             appearance = {
-                -- Sets the fallback highlight groups to nvim-cmp's highlight groups
-                -- Useful for when your theme doesn't support blink.cmp
-                -- will be removed in a future release
                 use_nvim_cmp_as_default = true,
-                -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-                -- Adjusts spacing to ensure icons are aligned
                 nerd_font_variant = "mono",
             },
-            -- default list of enabled providers defined so that you can extend it
-            -- elsewhere in your config, without redefining it, via `opts_extend`
             sources = {
                 default = { "lsp", "path", "snippets", "buffer" },
-                -- cmdline = {},
             },
         },
-        -- allows extending the providers array elsewhere in your config
-        -- without having to redefine it
         opts_extend = { "sources.default" },
     },
 }
