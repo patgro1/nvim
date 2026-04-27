@@ -17,17 +17,26 @@ local options = {
     writebackup = false,                 -- Disable file backup on save
     swapfile = false,                    -- Disable swap files
     laststatus = 3,                      -- Single status line for the whole frame
-    signcolumn = "auto:4",               -- Show the sign colum (for gitsigns)
+    signcolumn = "yes:1",                -- Show the sign colum (for gitsigns)
+    statuscolumn = "%s%=%l",
     number = true,                       -- Show line numbers
     relativenumber = true,               -- Use relative line numbers
     scrolloff = 8,                       -- Keep at least 8 lines above the cursor.
     wrap = false,                        -- Disable line wrap
     colorcolumn = "120",                 -- Color the 120 character as a limit for line length
+    numberwidth = 2,
+    foldcolumn = "0"
     --tex_flavor = 'latex',
 }
 
 for opt, val in pairs(options) do
     vim.opt[opt] = val
 end
-
-
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        -- Linking to 'LineNr' makes it match the other line numbers,
+        -- which is dimmer than 'Special'. 'bold = true' keeps it distinguishable.
+        vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Question", bold = true })
+    end,
+})
