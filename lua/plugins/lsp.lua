@@ -1,14 +1,14 @@
 local set_lsp_keymaps = function()
     local wk = require("which-key")
     wk.add({
-        { "<leader>l", group = "lsp" },
-        { "gd",        vim.lsp.buf.definition,  desc = "LSP goto definition" },
-        { "gD",        vim.lsp.buf.declaration, desc = "LSP goto declaration" },
-        { "K",         vim.lsp.buf.hover,       desc = "LSP Hover" },
-        { "grr",       vim.lsp.buf.references,  desc = "LSP Show References" },
-        { "<leader>la", vim.lsp.buf.code_action, desc = "LSP Code Actions", mode = { "n", "v" } },
-        { "<leader>lr", vim.lsp.buf.rename,     desc = "LSP Rename" },
-        { "<leader>lf", vim.lsp.buf.format,     desc = "LSP Format" },
+        { "<leader>l",  group = "lsp" },
+        { "gd",         vim.lsp.buf.definition,  desc = "LSP goto definition" },
+        { "gD",         vim.lsp.buf.declaration, desc = "LSP goto declaration" },
+        { "K",          vim.lsp.buf.hover,       desc = "LSP Hover" },
+        { "grr",        vim.lsp.buf.references,  desc = "LSP Show References" },
+        { "<leader>la", vim.lsp.buf.code_action, desc = "LSP Code Actions",    mode = { "n", "v" } },
+        { "<leader>lr", vim.lsp.buf.rename,      desc = "LSP Rename" },
+        { "<leader>lf", vim.lsp.buf.format,      desc = "LSP Format" },
     })
 end
 
@@ -20,7 +20,7 @@ local set_rust_lsp_keymaps = function()
         { "gD",         vim.lsp.buf.declaration,                                desc = "LSP goto declaration" },
         { "K",          vim.lsp.buf.hover,                                      desc = "LSP Hover" },
         { "grr",        vim.lsp.buf.references,                                 desc = "LSP Show References" },
-        { "<leader>la", vim.lsp.buf.code_action,                                desc = "LSP Code Actions", mode = { "n", "v" } },
+        { "<leader>la", vim.lsp.buf.code_action,                                desc = "LSP Code Actions",                 mode = { "n", "v" } },
         { "<leader>lr", vim.lsp.buf.rename,                                     desc = "LSP Rename" },
         { "<leader>lf", vim.lsp.buf.format,                                     desc = "LSP Format" },
         { "<leader>lh", function() vim.cmd.RustLsp({ 'hover', 'actions' }) end, desc = "LSP Hover Actions" },
@@ -44,6 +44,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         event = "BufReadPre",
+        version = "2.*",
         dependencies = {
             { "williamboman/mason.nvim", config = true },
             {

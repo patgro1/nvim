@@ -4,33 +4,44 @@ return {
         lazy = false,
         version = "v1.*",
         opts = {
-            -- 1. ADD THIS 'completion' BLOCK
+            -- 1. Adjust completion behavior
             completion = {
                 menu = {
                     draw = {
-                        -- We define 3 columns.
-                        -- The middle column contains the name (label) AND the detail (label_description)
                         columns = {
                             { "kind_icon" },
                             { "label",    "label_description", gap = 1 }
                         },
                     },
                 },
-                -- Optional: Ensure documentation window pops up automatically
+                -- This allows the menu to trigger even if you haven't typed anything
+                trigger = {
+                    show_on_keyword = true,
+                    show_on_trigger_character = true,
+                    show_on_accept_on_trigger_character = true,
+                },
                 documentation = {
                     auto_show = false,
                     auto_show_delay_ms = 500,
                 },
             },
 
-            -- ... Keep your existing settings below ...
-            keymap = { preset = "default" },
+            -- 2. ADD CUSTOM KEYMAPS HERE
+            keymap = {
+                preset = "default",
+                -- Manually show the completion menu
+                ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+            },
+
             appearance = {
-                use_nvim_cmp_as_default = true,
+                use_nvim_cmp_as_default = false,
                 nerd_font_variant = "mono",
             },
+
             sources = {
                 default = { "lsp", "path", "snippets", "buffer" },
+                -- Optional: Ensure providers don't require minimum characters
+                min_keyword_length = 0,
             },
         },
         opts_extend = { "sources.default" },
