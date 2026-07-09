@@ -1,0 +1,1 @@
+/home/pgrogan/workspace/tree-sitter-vhdl/queries/Neovim/highlights.scm

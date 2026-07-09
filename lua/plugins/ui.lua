@@ -74,5 +74,47 @@ return {
             'nvim-telescope/telescope-fzf-native.nvim',
             'nvim-tree/nvim-web-devicons',
         }
-    }
-}
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+        opts = {
+            cmdline = {
+                enabled = false,
+            },
+            messages = {
+                enabled = false,
+            },
+            lsp = {
+                hover = {
+                    enabled = true,
+                    silent = true, -- no notification that hover opened
+                    view = "hover",
+                    opts = {
+                        border = "rounded",
+                        position = { row = 2, col = 2 },
+                        size = {
+                            max_width = 80,
+                            max_height = 20,
+                        },
+                        win_options = {
+                            winblend = 10, -- slight transparency
+                        },
+                    },
+                },
+            },
+            routes = {
+                {
+                    filter = { event = "msg_show" },
+                    opts = { skip = true },
+                },
+            },
+            notify = {
+                enabled = false,
+            },
+        },
+    }, }

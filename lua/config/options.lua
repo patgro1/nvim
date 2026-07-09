@@ -17,7 +17,7 @@ local options = {
     writebackup = false,                 -- Disable file backup on save
     swapfile = false,                    -- Disable swap files
     laststatus = 3,                      -- Single status line for the whole frame
-    signcolumn = "yes:1",                -- Show the sign colum (for gitsigns)
+    signcolumn = "yes:2",                -- Show the sign colum (for gitsigns)
     statuscolumn = "%s%=%l",
     number = true,                       -- Show line numbers
     relativenumber = true,               -- Use relative line numbers

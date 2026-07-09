@@ -1,54 +1,39 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        event = "BufReadPost",
+        branch = "main",
+        build = ":TSUpdate",
+        event = { "BufReadPost", "BufNewFile" },
         opts = {
             ensure_installed = {
-                "bash",
-                "cmake",
-                "cpp",
-                "fish",
-                "go",
-                "javascript",
-                -- "latex",
-                "lua",
-                "norg",
-                "python",
-                "rst",
-                "rust",
-                -- "systemverilog",
-                "verilog",
-                "vhdl",
-                "yaml",
+                "bash", "cmake", "cpp", "fish", "go", "javascript",
+                "lua", "norg", "python", "rst", "rust", "verilog",
+                "vhdl", "yaml",
             },
-            highlight = {
-                enable = true,
-                -- disable = { "vhdl" },
-                additional_vim_regex_highlighting = { "python" },
-            },
-            context_commentstring = {
-                enable = true,
-            },
+            highlight = { enable = true },
         },
-        build = ":TSUpdate",
         config = function(_, opts)
-            local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-            parser_config.vhdl = {
-                install_info = {
-                    url = "/home/pat/workspace/oxide-hdl/tree-sitter-vhdl/",
-                    files = { "src/parser.c", "src/scanner.c" },
-                    generate_requires_npm = false,
-                    requires_generate_from_grammar = false,
-                },
-                filetype = "vhdl",
-            }
-            require("nvim-treesitter.configs").setup(opts)
+            local parsers = require("nvim-treesitter.parsers")
+
+            -- 1. Try to find the config table wherever it's hiding
+            -- In the latest 'main', it's usually nvim-treesitter.parsers.list
+            -- but let's fall back to get_parser_configs if list is nil.
+            local parser_config = parsers.list or (parsers.get_parser_configs and parsers.get_parser_configs())
+
+            if parser_config then
+                parser_config.vhdl = {
+                    install_info = {
+                        url = "/home/pgrogan/workspace/oxide-hdl/tree-sitter-vhdl/",
+                        files = { "src/parser.c", "src/scanner.c" },
+                        generate_requires_npm = false,
+                        requires_generate_from_grammar = false,
+                    },
+                    filetype = "vhdl",
+                }
+            end
+
+            -- 2. Setup using the correct top-level module
+            require("nvim-treesitter").setup(opts)
         end,
-    },
-    {
-        "nvim-treesitter/playground",
-        cmd = {
-            "TSPlaygroundToggle",
-        },
     },
 }
